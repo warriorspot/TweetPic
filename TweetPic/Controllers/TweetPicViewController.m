@@ -72,12 +72,18 @@
     return [self.tweetPics count];
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0f;
+}
+
 #pragma mark - private methods
 
 - (void) didReceiveTweetPicNotification: (NSNotification *) notification
 {
     TweetPic *tweetPic = [notification.userInfo valueForKey:TweetPicKey];
     [self.tweetPics addObject:tweetPic];
+    [self.tweetPicTableView reloadData];
 }
 
 @end
