@@ -1,0 +1,12 @@
+.DS_Store
+*.swp
+*~.nib
+
+build/
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+
+TweetPic.xcodeproj/xcuserdata/*
+TweetPic.xcodeproj/project.xcworkspace/xcuserdata/*
