@@ -33,17 +33,17 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
-			<object class="IBUIView" id="635906161">
+			<object class="IBUIView" id="627270875">
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUISearchBar" id="787893192">
-						<reference key="NSNextResponder" ref="635906161"/>
+					<object class="IBUISearchBar" id="872247617">
+						<reference key="NSNextResponder" ref="627270875"/>
 						<int key="NSvFlags">290</int>
 						<string key="NSFrameSize">{320, 44}</string>
-						<reference key="NSSuperview" ref="635906161"/>
+						<reference key="NSSuperview" ref="627270875"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="309067739"/>
+						<reference key="NSNextKeyView" ref="1033712706"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">3</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -51,11 +51,11 @@
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 					</object>
-					<object class="IBUISegmentedControl" id="1001654098">
-						<reference key="NSNextResponder" ref="635906161"/>
+					<object class="IBUISegmentedControl" id="34636831">
+						<reference key="NSNextResponder" ref="627270875"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{-7, 431}, {334, 30}}</string>
-						<reference key="NSSuperview" ref="635906161"/>
+						<reference key="NSSuperview" ref="627270875"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -85,13 +85,13 @@
 							<reference ref="4"/>
 						</array>
 					</object>
-					<object class="IBUITableView" id="309067739">
-						<reference key="NSNextResponder" ref="635906161"/>
+					<object class="IBUITableView" id="1033712706">
+						<reference key="NSNextResponder" ref="627270875"/>
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 44}, {320, 386}}</string>
-						<reference key="NSSuperview" ref="635906161"/>
+						<reference key="NSSuperview" ref="627270875"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1001654098"/>
+						<reference key="NSNextKeyView" ref="34636831"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -111,7 +111,7 @@
 				<string key="NSFrameSize">{320, 460}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="787893192"/>
+				<reference key="NSNextKeyView" ref="872247617"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -129,9 +129,49 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">view</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="635906161"/>
+						<reference key="destination" ref="627270875"/>
 					</object>
 					<int key="connectionID">3</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">searchBar</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="872247617"/>
+					</object>
+					<int key="connectionID">7</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">segmentedControl</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="34636831"/>
+					</object>
+					<int key="connectionID">8</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tweetPicTableView</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="1033712706"/>
+					</object>
+					<int key="connectionID">12</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">dataSource</string>
+						<reference key="source" ref="1033712706"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">10</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="1033712706"/>
+						<reference key="destination" ref="841351856"/>
+					</object>
+					<int key="connectionID">11</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -155,28 +195,31 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">2</int>
-						<reference key="object" ref="635906161"/>
+						<reference key="object" ref="627270875"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="787893192"/>
-							<reference ref="309067739"/>
-							<reference ref="1001654098"/>
+							<reference ref="872247617"/>
+							<reference ref="1033712706"/>
+							<reference ref="34636831"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="787893192"/>
-						<reference key="parent" ref="635906161"/>
+						<reference key="object" ref="872247617"/>
+						<reference key="parent" ref="627270875"/>
+						<string key="objectName">searchBar</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">5</int>
-						<reference key="object" ref="1001654098"/>
-						<reference key="parent" ref="635906161"/>
+						<reference key="object" ref="34636831"/>
+						<reference key="parent" ref="627270875"/>
+						<string key="objectName">segmentedControl</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">6</int>
-						<reference key="object" ref="309067739"/>
-						<reference key="parent" ref="635906161"/>
+						<reference key="object" ref="1033712706"/>
+						<reference key="parent" ref="627270875"/>
+						<string key="objectName">tweetPicTableView</string>
 					</object>
 				</array>
 			</object>
@@ -194,13 +237,32 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">6</int>
+			<int key="maxID">12</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">TweetPicViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="searchBar">UISearchBar</string>
+						<string key="segmentedControl">UISegmentedControl</string>
+						<string key="tweetPicTableView">UITableView</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="searchBar">
+							<string key="name">searchBar</string>
+							<string key="candidateClassName">UISearchBar</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="segmentedControl">
+							<string key="name">segmentedControl</string>
+							<string key="candidateClassName">UISegmentedControl</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tweetPicTableView">
+							<string key="name">tweetPicTableView</string>
+							<string key="candidateClassName">UITableView</string>
+						</object>
+					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/TweetPicViewController.h</string>
