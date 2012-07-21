@@ -1,6 +1,7 @@
 
 #import "MBProgressHUD.h"
 #import "TweetPic.h"
+#import "TweetPicCell.h"
 #import "TweetPicManager.h"
 #import "TweetPicViewController.h"
 #import "TweetPicViewController+Private.h"
@@ -29,8 +30,8 @@
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self 
-                      selector:@selector(didReceiveTweetPicNotification:) 
-                          name:TweetPicCreatedNotification 
+                      selector:@selector(didReceiveTweetPicsNotification:) 
+                          name:TweetPicsCreatedNotification 
                         object:nil];
 }
 
@@ -78,11 +79,15 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TweetPicCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) 
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TweetPicCell" owner:nil options:nil] objectAtIndex:0];
     }
+    
+    TweetPic *tweetPic = [self.tweetPics objectAtIndex:indexPath.row];
+    cell.imageView.image = tweetPic.image;
+    cell.tweetLabel.text = tweetPic.tweet;
     
     return cell;
 }
@@ -101,10 +106,19 @@
 
 #pragma mark - private methods
 
-- (void) didReceiveTweetPicNotification: (NSNotification *) notification
+- (void) didReceiveTweetPicsNotification: (NSNotification *) notification
 {
-    TweetPic *tweetPic = [notification.userInfo valueForKey:TweetPicKey];
-    [self.tweetPics addObject:tweetPic];
+    [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
+    
+    NSArray *newTweetPics = [notification.userInfo valueForKey:TweetPicsKey];
+    
+    if(self.tweetPics == nil)
+    {
+        self.tweetPics = [[NSMutableArray alloc] init];
+    }
+    
+    [self.tweetPics removeAllObjects];
+    [self.tweetPics addObjectsFromArray:newTweetPics];
     [self.tweetPicTableView reloadData];
 }
 
