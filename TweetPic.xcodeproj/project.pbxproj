@@ -29,6 +29,7 @@
 		2682CA1115B9090B00AA15B4 /* TweetPicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2682CA1015B9090B00AA15B4 /* TweetPicCell.xib */; };
 		2682CA1D15B9130600AA15B4 /* TweetPicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA1C15B9130600AA15B4 /* TweetPicCell.m */; };
 		2682CA2115BA30EC00AA15B4 /* TweetPicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2015BA30EC00AA15B4 /* TweetPicManager.m */; };
+		2682CA2515BA32AC00AA15B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		2682CA1C15B9130600AA15B4 /* TweetPicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicCell.m; sourceTree = "<group>"; };
 		2682CA1F15BA30EC00AA15B4 /* TweetPicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManager.h; sourceTree = "<group>"; };
 		2682CA2015BA30EC00AA15B4 /* TweetPicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicManager.m; sourceTree = "<group>"; };
+		2682CA2315BA32AC00AA15B4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,7 @@
 			children = (
 				2682CA1E15BA30EB00AA15B4 /* Application */,
 				2682C9F515B9063300AA15B4 /* Controllers */,
+				2682CA2215BA32AC00AA15B4 /* External */,
 				2682C9F415B9063300AA15B4 /* Models */,
 				2682C9F315B9063300AA15B4 /* Networking */,
 				2682C9F215B9063300AA15B4 /* Views */,
@@ -241,6 +245,15 @@
 			path = TweetPic/Application;
 			sourceTree = "<group>";
 		};
+		2682CA2215BA32AC00AA15B4 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				2682CA2315BA32AC00AA15B4 /* MBProgressHUD.h */,
+				2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -360,6 +373,7 @@
 				2682CA0D15B908BD00AA15B4 /* TweetPicViewController.m in Sources */,
 				2682CA1D15B9130600AA15B4 /* TweetPicCell.m in Sources */,
 				2682CA2115BA30EC00AA15B4 /* TweetPicManager.m in Sources */,
+				2682CA2515BA32AC00AA15B4 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
