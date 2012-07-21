@@ -1,7 +1,14 @@
 
 #import <Foundation/Foundation.h>
+#import "Request.h"
 
-@interface TweetPicManager : NSObject
+@class MovieRequest;
+@class TweetRequest;
+
+@interface TweetPicManager : NSObject <RequestDelegate>
+
+@property (nonatomic, strong) MovieRequest *movieRequest;
+@property (nonatomic, strong) TweetRequest *tweetRequest;
 
 @end
 
