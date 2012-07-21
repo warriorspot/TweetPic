@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2680434D15BA4F2A004D23F0 /* beer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2680434C15BA4F2A004D23F0 /* beer.jpg */; };
 		2682C9C415B8FDB600AA15B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682C9C315B8FDB600AA15B4 /* UIKit.framework */; };
 		2682C9C615B8FDB600AA15B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682C9C515B8FDB600AA15B4 /* Foundation.framework */; };
 		2682C9C815B8FDB600AA15B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682C9C715B8FDB600AA15B4 /* CoreGraphics.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2680434C15BA4F2A004D23F0 /* beer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = beer.jpg; sourceTree = "<group>"; };
 		2682C9BF15B8FDB600AA15B4 /* TweetPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TweetPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2682C9C315B8FDB600AA15B4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2682C9C515B8FDB600AA15B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -116,6 +118,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2680434B15BA4F2A004D23F0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2680434C15BA4F2A004D23F0 /* beer.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		2682C9B415B8FDB500AA15B4 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +207,7 @@
 		2682C9F215B9063300AA15B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2680434B15BA4F2A004D23F0 /* Images */,
 				2682CA1015B9090B00AA15B4 /* TweetPicCell.xib */,
 				2682CA1B15B9130600AA15B4 /* TweetPicCell.h */,
 				2682CA1C15B9130600AA15B4 /* TweetPicCell.m */,
@@ -341,6 +352,7 @@
 				2682CA0F15B908D900AA15B4 /* TweetPicView.xib in Resources */,
 				2682CA1115B9090B00AA15B4 /* TweetPicCell.xib in Resources */,
 				2682CA2715BA34B400AA15B4 /* Localizable.strings in Resources */,
+				2680434D15BA4F2A004D23F0 /* beer.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +561,7 @@
 				2682C9EE15B8FDB600AA15B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2682C9EF15B8FDB600AA15B4 /* Build configuration list for PBXNativeTarget "TweetPicTests" */ = {
 			isa = XCConfigurationList;
@@ -557,6 +570,7 @@
 				2682C9F115B8FDB600AA15B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
