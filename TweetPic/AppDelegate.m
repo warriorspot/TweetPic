@@ -6,11 +6,11 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize tweetPicController;
+@synthesize tweetPicManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    tweetPicController = [[TweetPicManager alloc] init];
+    self.tweetPicManager = [[TweetPicManager alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

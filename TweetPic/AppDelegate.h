@@ -6,6 +6,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) TweetPicManager *tweetPicController;
+@property (nonatomic, strong) TweetPicManager *tweetPicManager;
 
 @end
