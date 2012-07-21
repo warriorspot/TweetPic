@@ -1,4 +1,5 @@
 
+#import "MBProgressHUD.h"
 #import "TweetPic.h"
 #import "TweetPicManager.h"
 #import "TweetPicViewController.h"
@@ -7,7 +8,7 @@
 @implementation TweetPicViewController
 
 @synthesize tweetPics;
-@synthesize searchBar;
+@synthesize tweetSearchBar;
 @synthesize tweetPicTableView;
 @synthesize segmentedControl;
 
@@ -38,7 +39,7 @@
     [super viewDidUnload];
     
     self.tweetPics = nil;
-    self.searchBar = nil;
+    self.tweetSearchBar = nil;
     self.tweetPicTableView = nil;
     self.segmentedControl = nil;
     
@@ -48,6 +49,27 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - UISearchBarDelegate methods
+
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    NSString *searchTerm = searchBar.text;
+    
+    if(searchTerm != nil || [searchTerm length] > 0)
+    {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tweetPicTableView animated:YES];
+        hud.labelText = NSLocalizedString(@"LOADING_LABEL", NULL);
+        
+        [searchBar resignFirstResponder];
+        
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:searchTerm 
+                                                             forKey:SearchTermKey];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DidEnterSearchTermNotification 
+                                                            object:self 
+                                                          userInfo:userInfo];
+    }
 }
 
 #pragma mark - UITableViewDelegate methods
