@@ -1,6 +1,11 @@
 
 #import <Foundation/Foundation.h>
+#import "Request.h"
 
-@interface MovieRequest : NSObject
+@class SimpleRESTRequest;
+
+@interface MovieRequest : Request
+
+@property (nonatomic, strong) SimpleRESTRequest *request;
 
 @end
