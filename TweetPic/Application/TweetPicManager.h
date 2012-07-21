@@ -12,5 +12,5 @@
 
 @end
 
-extern NSString * const TweetPicCreatedNotification;
-extern NSString * const TweetPicKey;
+extern NSString * const TweetPicsCreatedNotification;
+extern NSString * const TweetPicsKey;
