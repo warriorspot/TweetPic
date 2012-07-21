@@ -1,11 +1,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class TweetPicController;
+@class TweetPicManager;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, strong) TweetPicController *tweetPicController;
+@property (nonatomic, strong) TweetPicManager *tweetPicController;
 
 @end

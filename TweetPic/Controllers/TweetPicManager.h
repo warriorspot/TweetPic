@@ -1,7 +1,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TweetPicController : NSObject
+@interface TweetPicManager : NSObject
 
 @end
 

@@ -1,6 +1,6 @@
 
 #import "AppDelegate.h"
-#import "TweetPicController.h"
+#import "TweetPicManager.h"
 #import "TweetPicViewController.h"
 
 @implementation AppDelegate
@@ -10,7 +10,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    tweetPicController = [[TweetPicController alloc] init];
+    tweetPicController = [[TweetPicManager alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];

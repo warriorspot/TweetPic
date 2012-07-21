@@ -1,8 +1,8 @@
 
 #import "TweetPic.h"
+#import "TweetPicManager.h"
 #import "TweetPicViewController.h"
 #import "TweetPicViewController+Private.h"
-#import "TweetPicController.h"
 
 @implementation TweetPicViewController
 

@@ -1,7 +1,7 @@
 
-#import "TweetPicController.h"
+#import "TweetPicManager.h"
 
-@implementation TweetPicController
+@implementation TweetPicManager
 
 @end
 
