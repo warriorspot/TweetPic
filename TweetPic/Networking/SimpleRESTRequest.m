@@ -80,7 +80,8 @@
 	}
 	else
 	{
-		NSDictionary *userInfo = [NSDictionary dictionaryWithObject: json forKey: SimpleRESTRequestJSONKey];
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObject: json 
+                                                             forKey: SimpleRESTRequestJSONKey];
 		[[NSNotificationCenter defaultCenter] postNotificationName: SimpleRESTRequestDidSucceedNotification
  												        object: self
 											          userInfo: userInfo]; 
