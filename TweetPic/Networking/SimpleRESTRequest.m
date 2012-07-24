@@ -11,42 +11,42 @@
 {
 	return [self initWithBaseURL: nil 
  	                   targetURL: nil];
-
+    
 }
 
 - (id) initWithBaseURL: (NSString *) newBaseURL
 {
 	return [self initWithBaseURL: newBaseURL
  	                   targetURL: nil];
-
+    
 }
 
 - (id) initWithBaseURL: (NSString *) newBaseURL 
              targetURL: (NSString *) newTargetURL 
 {
 	self = [super init];
-
+    
 	if(self)
 	{
 		self.baseURL = newBaseURL;
 		self.targetURL = newTargetURL;
 	}
-
+    
 	return self;
 }
 
 - (void) start
 {
 	if(self.running) return;
-
+    
 	running = YES;
-
+    
 	if(self.baseURL == nil && self.targetURL == nil)
 	{
 		NSLog(@"No URL defined for request");
 		return;
 	}
-
+    
 	NSString *urlString = [NSString stringWithFormat:@"%@/%@", self.baseURL, self.targetURL];
 	NSURL *url = [NSURL URLWithString: urlString];
     _connection = [NSURLConnection connectionWithRequest: [NSURLRequest requestWithURL: url] 
@@ -70,21 +70,20 @@
 - (void) connectionDidFinishLoading: (NSURLConnection *) connection
 {
 	NSLog(@"finished");
- 
+    
 	NSError *error = nil;
     id json = [NSJSONSerialization JSONObjectWithData: _data options: 0 error: &error];
-
+    
 	if(error)
 	{
 		NSLog(@"Error parsing JSON %@", [error localizedDescription]);
 	}
 	else
 	{
-		NSDictionary *userInfo = [NSDictionary dictionaryWithObject: json 
-                                                             forKey: SimpleRESTRequestJSONKey];
+		NSDictionary *userInfo = [NSDictionary dictionaryWithObject: json forKey: SimpleRESTRequestJSONKey];
 		[[NSNotificationCenter defaultCenter] postNotificationName: SimpleRESTRequestDidSucceedNotification
- 												        object: self
-											          userInfo: userInfo]; 
+                                                            object: self
+                                                          userInfo: userInfo]; 
 	}
 }
 
@@ -102,9 +101,9 @@
 - (void) connection: (NSURLConnection *) connection didFailWithError: (NSError *) error
 {
 	running = NO;
-
+    
 	NSLog(@"connection failed");
-
+    
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject: error forKey: SimpleRESTRequestFailureKey];
     [[NSNotificationCenter defaultCenter] postNotificationName: SimpleRESTRequestDidFailNotification
  												        object: self
@@ -117,4 +116,3 @@ NSString * const SimpleRESTRequestDidSucceedNotification = @"SimpleRESTRequestDi
 NSString * const SimpleRESTRequestJSONKey = @"SimpleRESTRequestJSONKey";
 NSString * const SimpleRESTRequestDidFailNotification = @"SimpleRESTRequestDidFail";
 NSString * const SimpleRESTRequestFailureKey = @"SimpleRESTRequestFailureKey";
-
