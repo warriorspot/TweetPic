@@ -34,6 +34,7 @@
 		2682CA2715BA34B400AA15B4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2682CA2615BA34B400AA15B4 /* Localizable.strings */; };
 		2682CA2A15BA377600AA15B4 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2915BA377600AA15B4 /* Request.m */; };
 		2682CA2C15BA3EDB00AA15B4 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */; };
+		44C8A99C15BF6C19009E97A8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A99B15BF6C19009E97A8 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		2682CA2815BA377600AA15B4 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		2682CA2915BA377600AA15B4 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		44C8A99A15BF6C19009E97A8 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		44C8A99B15BF6C19009E97A8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +225,8 @@
 			children = (
 				2682C9FC15B906AF00AA15B4 /* MovieRequest.h */,
 				2682C9FD15B906AF00AA15B4 /* MovieRequest.m */,
+				44C8A99A15BF6C19009E97A8 /* Reachability.h */,
+				44C8A99B15BF6C19009E97A8 /* Reachability.m */,
 				2682CA2815BA377600AA15B4 /* Request.h */,
 				2682CA2915BA377600AA15B4 /* Request.m */,
 				2682C9FF15B906D400AA15B4 /* SimpleRESTRequest.m */,
@@ -400,6 +405,7 @@
 				2682CA2115BA30EC00AA15B4 /* TweetPicManager.m in Sources */,
 				2682CA2515BA32AC00AA15B4 /* MBProgressHUD.m in Sources */,
 				2682CA2A15BA377600AA15B4 /* Request.m in Sources */,
+				44C8A99C15BF6C19009E97A8 /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
