@@ -53,11 +53,10 @@
 					</object>
 					<object class="IBUISegmentedControl" id="948530978">
 						<reference key="NSNextResponder" ref="578905013"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{-7, 431}, {334, 30}}</string>
 						<reference key="NSSuperview" ref="578905013"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -87,7 +86,7 @@
 					</object>
 					<object class="IBUITableView" id="465890449">
 						<reference key="NSNextResponder" ref="578905013"/>
-						<int key="NSvFlags">274</int>
+						<int key="NSvFlags">279</int>
 						<string key="NSFrame">{{0, 44}, {320, 386}}</string>
 						<reference key="NSSuperview" ref="578905013"/>
 						<reference key="NSWindow"/>
@@ -206,8 +205,8 @@
 						<reference key="object" ref="578905013"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="61220524"/>
-							<reference ref="465890449"/>
 							<reference ref="948530978"/>
+							<reference ref="465890449"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
