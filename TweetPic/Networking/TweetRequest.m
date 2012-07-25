@@ -6,11 +6,6 @@
 @synthesize active;
 @synthesize request;
 
-- (void) start
-{
-    [self startWithSearchTerm:nil];
-}
-
 - (void) startWithSearchTerm:(NSString *)searchTerm
 {
     if(searchTerm == nil || [searchTerm length] == 0)

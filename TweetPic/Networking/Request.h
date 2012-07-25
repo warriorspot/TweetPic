@@ -8,7 +8,7 @@
 @property (readonly) BOOL active;
 @property (nonatomic, assign) id delegate;
 
-- (void) start;
+- (void) startWithSearchTerm: (NSString *) searchTerm;
 - (void) stop;
 
 @end

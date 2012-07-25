@@ -9,7 +9,7 @@
 
 #pragma mark - instance methods
 
-- (void) start
+- (void) startWithSearchTerm: (NSString *) searchTerm
 {
     // Implement in subclass
 }
