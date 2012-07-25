@@ -15,7 +15,6 @@
 		2682C9DD15B8FDB600AA15B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682C9C315B8FDB600AA15B4 /* UIKit.framework */; };
 		2682C9DE15B8FDB600AA15B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682C9C515B8FDB600AA15B4 /* Foundation.framework */; };
 		2682C9E615B8FDB600AA15B4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2682C9E415B8FDB600AA15B4 /* InfoPlist.strings */; };
-		2682C9E915B8FDB600AA15B4 /* TweetPicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682C9E815B8FDB600AA15B4 /* TweetPicTests.m */; };
 		2682C9FB15B9069500AA15B4 /* TweetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682C9FA15B9069500AA15B4 /* TweetRequest.m */; };
 		2682C9FE15B906AF00AA15B4 /* MovieRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682C9FD15B906AF00AA15B4 /* MovieRequest.m */; };
 		2682CA0115B906D400AA15B4 /* SimpleRESTRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682C9FF15B906D400AA15B4 /* SimpleRESTRequest.m */; };
@@ -36,6 +35,7 @@
 		44C8A9AD15BF6CB7009E97A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44C8A9A715BF6CB7009E97A8 /* Localizable.strings */; };
 		44C8A9AE15BF6CB7009E97A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A9A815BF6CB7009E97A8 /* main.m */; };
 		44C8A9B115BF6CEE009E97A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C8A9B015BF6CEE009E97A8 /* SystemConfiguration.framework */; };
+		44C8A9BC15BF89CB009E97A8 /* TweetPicManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A9BB15BF89CB009E97A8 /* TweetPicManagerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +58,6 @@
 		2682C9DB15B8FDB600AA15B4 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		2682C9E315B8FDB600AA15B4 /* TweetPicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TweetPicTests-Info.plist"; sourceTree = "<group>"; };
 		2682C9E515B8FDB600AA15B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2682C9E715B8FDB600AA15B4 /* TweetPicTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TweetPicTests.h; sourceTree = "<group>"; };
-		2682C9E815B8FDB600AA15B4 /* TweetPicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TweetPicTests.m; sourceTree = "<group>"; };
 		2682C9F915B9069500AA15B4 /* TweetRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetRequest.h; sourceTree = "<group>"; };
 		2682C9FA15B9069500AA15B4 /* TweetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetRequest.m; sourceTree = "<group>"; };
 		2682C9FC15B906AF00AA15B4 /* MovieRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieRequest.h; sourceTree = "<group>"; };
@@ -96,6 +94,9 @@
 		44C8A9A915BF6CB7009E97A8 /* TweetPic-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetPic-Info.plist"; sourceTree = "<group>"; };
 		44C8A9AA15BF6CB7009E97A8 /* TweetPic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPic-Prefix.pch"; sourceTree = "<group>"; };
 		44C8A9B015BF6CEE009E97A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		44C8A9B915BF8641009E97A8 /* TweetPicManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPicManager+Private.h"; sourceTree = "<group>"; };
+		44C8A9BA15BF89CB009E97A8 /* TweetPicManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManagerTests.h; sourceTree = "<group>"; };
+		44C8A9BB15BF89CB009E97A8 /* TweetPicManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +174,8 @@
 		2682C9E115B8FDB600AA15B4 /* TweetPicTests */ = {
 			isa = PBXGroup;
 			children = (
-				2682C9E715B8FDB600AA15B4 /* TweetPicTests.h */,
-				2682C9E815B8FDB600AA15B4 /* TweetPicTests.m */,
+				44C8A9BA15BF89CB009E97A8 /* TweetPicManagerTests.h */,
+				44C8A9BB15BF89CB009E97A8 /* TweetPicManagerTests.m */,
 				2682C9E215B8FDB600AA15B4 /* Supporting Files */,
 			);
 			path = TweetPicTests;
@@ -273,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				44C8A99F15BF6C75009E97A8 /* TweetPicManager.h */,
+				44C8A9B915BF8641009E97A8 /* TweetPicManager+Private.h */,
 				44C8A9A015BF6C75009E97A8 /* TweetPicManager.m */,
 			);
 			name = Managers;
@@ -418,7 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2682C9E915B8FDB600AA15B4 /* TweetPicTests.m in Sources */,
+				44C8A9BC15BF89CB009E97A8 /* TweetPicManagerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +530,7 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TweetPic/TweetPic-Prefix.pch";
+				GCC_PREFIX_HEADER = "TweetPic/Application/TweetPic-Prefix.pch";
 				INFOPLIST_FILE = "TweetPicTests/TweetPicTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -545,7 +547,7 @@
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TweetPic/TweetPic-Prefix.pch";
+				GCC_PREFIX_HEADER = "TweetPic/Application/TweetPic-Prefix.pch";
 				INFOPLIST_FILE = "TweetPicTests/TweetPicTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

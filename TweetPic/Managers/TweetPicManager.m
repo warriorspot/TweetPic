@@ -2,6 +2,7 @@
 #import "MovieRequest.h"
 #import "TweetPic.h"
 #import "TweetPicManager.h"
+#import "TweetPicManager+Private.h"
 #import "TweetPicViewController.h"
 #import "TweetRequest.h"
 
@@ -9,6 +10,7 @@
 
 @synthesize movieRequest;
 @synthesize tweetRequest;
+@synthesize tweetToRequest;
 
 - (id) init
 {
@@ -70,6 +72,37 @@
     self.tweetRequest = [[TweetRequest alloc] init];
     self.tweetRequest.delegate = self;
     [self.tweetRequest startWithSearchTerm:[notification.userInfo valueForKey: SearchTermKey]];
+}
+
+- (void) fetchImageForTweetId: (NSString *) tweetId
+{
+    if(self.tweetToRequest == nil)
+    {
+        self.tweetToRequest = [NSMutableDictionary dictionary];
+    }
+    
+    MovieRequest *movieRequest = [[MovieRequest alloc] init];
+}
+
+- (NSString *) longestWordInTweet: (NSString *) tweet
+{
+    if(tweet == nil || [tweet length] == 0)
+    {
+        return nil;
+    }
+    
+    NSString *longestWord = @"";
+    NSArray *components = [tweet componentsSeparatedByString: @" "];
+    
+    for(NSString *string in components)
+    {
+        if([string length] > [longestWord length])
+        {
+            longestWord = string;
+        }
+    }
+    
+    return longestWord;
 }
 
 @end
