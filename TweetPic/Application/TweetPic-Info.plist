@@ -34,5 +34,15 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>RottenTomatoesAPIKey</key>
+	<string>5bnnj4evsvf3hqq77897q94x</string>
+	<key>RottenTomatoesBaseURL</key>
+	<string>http://api.rottentomatoes.com/api/public/v1.0</string>
+	<key>RottenTomatoesPath</key>
+	<string>/movies.json?apikey=%@&amp;q=%@</string>
+	<key>TwitterBaseURL</key>
+	<string>http://search.twitter.com</string>
+	<key>TwitterPath</key>
+	<string>/search.json?q=%@&amp;rpp=100&amp;result_type=recent</string>
 </dict>
 </plist>
