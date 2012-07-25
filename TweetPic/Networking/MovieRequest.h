@@ -6,6 +6,4 @@
 
 @interface MovieRequest : Request
 
-@property (nonatomic, strong) SimpleRESTRequest *request;
-
 @end

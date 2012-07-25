@@ -2,6 +2,13 @@
 #import "MovieRequest.h"
 #import "SimpleRESTRequest.h"
 
+@interface MovieRequest()
+
+@property (nonatomic, strong) SimpleRESTRequest *request;
+
+@end
+
+
 @implementation MovieRequest
 
 @synthesize active;
@@ -39,8 +46,16 @@
     return request.running;
 }
 
-- (void) start
+- (void) startWithSearchTerm: (NSString *) searchTerm
 {
+    NSString *term = [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *apiKey = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RottenTomatoesAPIKey"];
+    NSString *baseURL = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RottenTomatoesBaseURL"];
+    NSMutableString *targetPath = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"RottenTomatoesTargetPath"];
+    
+    self.request.baseURL = baseURL;
+    self.request.targetURL = [NSString stringWithFormat: targetPath, apiKey, term];
+    
     [request start];
 }
 
