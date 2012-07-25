@@ -10,5 +10,3 @@
 - (void) startWithSearchTerm: (NSString *) searchTerm;
 
 @end
-
-extern NSString * const TwitterURL;

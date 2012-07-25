@@ -20,9 +20,13 @@
     
     active = YES;
     
+    NSMutableString *baseURL = [NSMutableString stringWithString:[[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterBaseURL"]];
+    NSString *path = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"TwitterPath"];
     NSString *term = [searchTerm stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSString *urlString = [NSString stringWithFormat:TwitterURL, term];
-    NSURL *url = [NSURL URLWithString: urlString];
+    NSString *searchString = [NSString stringWithFormat: path, term];
+    [baseURL appendString: searchString];
+    
+    NSURL *url = [NSURL URLWithString: baseURL];
     
     request = [[TWRequest alloc] initWithURL: url
                                   parameters: nil 
@@ -59,5 +63,4 @@
 
 @end
 
-NSString * const TwitterURL = @"http://search.twitter.com/search.json?q=%@&rpp=100&result_type=recent";
 
