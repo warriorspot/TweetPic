@@ -5,7 +5,6 @@
 @property (nonatomic, strong) NSMutableDictionary *tweetToRequest;
 
 - (void) didEnterSearchTerm: (NSNotification *) notification;
-- (void) fetchImageForTweetId: (NSString *) tweetId;
-- (NSString *) longestWordInTweet: (NSString *) tweet;
+- (void) fetchImageForSearchTerm: (NSString *) searchTerm tweetId: (NSString *) tweetId;
 
 @end
