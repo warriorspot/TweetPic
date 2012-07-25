@@ -1,6 +1,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface TweetPicManagerTests : SenTestCase
+@interface TweetTests : SenTestCase
 
 @end

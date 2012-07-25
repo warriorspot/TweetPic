@@ -28,6 +28,8 @@
 		2682CA2515BA32AC00AA15B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */; };
 		2682CA2A15BA377600AA15B4 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2915BA377600AA15B4 /* Request.m */; };
 		2682CA2C15BA3EDB00AA15B4 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */; };
+		44887DE015C031940001F256 /* TweetPicManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44887DDE15C031940001F256 /* TweetPicManagerTests.m */; };
+		44887DE315C031A60001F256 /* TweetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44887DE215C031A60001F256 /* TweetTests.m */; };
 		44C8A99C15BF6C19009E97A8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A99B15BF6C19009E97A8 /* Reachability.m */; };
 		44C8A9A115BF6C75009E97A8 /* TweetPicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A9A015BF6C75009E97A8 /* TweetPicManager.m */; };
 		44C8A9AB15BF6CB7009E97A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A9A315BF6CB7009E97A8 /* AppDelegate.m */; };
@@ -35,7 +37,6 @@
 		44C8A9AD15BF6CB7009E97A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44C8A9A715BF6CB7009E97A8 /* Localizable.strings */; };
 		44C8A9AE15BF6CB7009E97A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A9A815BF6CB7009E97A8 /* main.m */; };
 		44C8A9B115BF6CEE009E97A8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44C8A9B015BF6CEE009E97A8 /* SystemConfiguration.framework */; };
-		44C8A9BC15BF89CB009E97A8 /* TweetPicManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A9BB15BF89CB009E97A8 /* TweetPicManagerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,10 @@
 		2682CA2815BA377600AA15B4 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		2682CA2915BA377600AA15B4 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		44887DDD15C031940001F256 /* TweetPicManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManagerTests.h; sourceTree = "<group>"; };
+		44887DDE15C031940001F256 /* TweetPicManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicManagerTests.m; sourceTree = "<group>"; };
+		44887DE115C031A60001F256 /* TweetTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetTests.h; sourceTree = "<group>"; };
+		44887DE215C031A60001F256 /* TweetTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetTests.m; sourceTree = "<group>"; };
 		44C8A99A15BF6C19009E97A8 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		44C8A99B15BF6C19009E97A8 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		44C8A99F15BF6C75009E97A8 /* TweetPicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManager.h; sourceTree = "<group>"; };
@@ -95,8 +100,6 @@
 		44C8A9AA15BF6CB7009E97A8 /* TweetPic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPic-Prefix.pch"; sourceTree = "<group>"; };
 		44C8A9B015BF6CEE009E97A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		44C8A9B915BF8641009E97A8 /* TweetPicManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPicManager+Private.h"; sourceTree = "<group>"; };
-		44C8A9BA15BF89CB009E97A8 /* TweetPicManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManagerTests.h; sourceTree = "<group>"; };
-		44C8A9BB15BF89CB009E97A8 /* TweetPicManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicManagerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,8 +177,8 @@
 		2682C9E115B8FDB600AA15B4 /* TweetPicTests */ = {
 			isa = PBXGroup;
 			children = (
-				44C8A9BA15BF89CB009E97A8 /* TweetPicManagerTests.h */,
-				44C8A9BB15BF89CB009E97A8 /* TweetPicManagerTests.m */,
+				44887DDC15C031940001F256 /* Managers */,
+				44887DDF15C031940001F256 /* Models */,
 				2682C9E215B8FDB600AA15B4 /* Supporting Files */,
 			);
 			path = TweetPicTests;
@@ -268,6 +271,24 @@
 				2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */,
 			);
 			path = External;
+			sourceTree = "<group>";
+		};
+		44887DDC15C031940001F256 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				44887DDD15C031940001F256 /* TweetPicManagerTests.h */,
+				44887DDE15C031940001F256 /* TweetPicManagerTests.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		44887DDF15C031940001F256 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				44887DE115C031A60001F256 /* TweetTests.h */,
+				44887DE215C031A60001F256 /* TweetTests.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		44C8A99E15BF6C75009E97A8 /* Managers */ = {
@@ -420,7 +441,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44C8A9BC15BF89CB009E97A8 /* TweetPicManagerTests.m in Sources */,
+				44887DE015C031940001F256 /* TweetPicManagerTests.m in Sources */,
+				44887DE315C031A60001F256 /* TweetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
