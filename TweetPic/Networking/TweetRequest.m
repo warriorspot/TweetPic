@@ -33,27 +33,53 @@
         
         if ([urlResponse statusCode] == 200) 
         {
-            NSError *error;        
+            NSError *jsonError;        
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseData 
                                                                  options:0 
-                                                                   error:&error];
+                                                                   error:&jsonError];
             NSLog(@"Twitter response: %@", json); 
             
-            if(self.delegate && [self.delegate respondsToSelector:@selector(request:didSucceed:)])
+            if(error)
             {
-                [self.delegate request:self didSucceed:json];                    
+                [self performSelectorOnMainThread:@selector(postFailure:) withObject:error waitUntilDone:NO];
+            }
+            else if(jsonError)
+            {
+                NSString *dataString = [NSString stringWithCString:[responseData bytes] encoding:NSUTF8StringEncoding];
+                NSLog(@"data: %@", dataString);
+                
+                [self performSelectorOnMainThread:@selector(postFailure:) withObject:jsonError waitUntilDone:NO];
+            }
+            else
+            {
+                [self performSelectorOnMainThread:@selector(postSuccess:) withObject:json waitUntilDone:NO];
             }
         }
         else
         {
             NSLog(@"Twitter error, HTTP response: %i", [urlResponse statusCode]);
             
-            if(self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)])
-            {
-                [self.delegate request:self didFailWithError:error];                    
-            }
+            [self performSelectorOnMainThread:@selector(postFailure:) withObject:error waitUntilDone:NO];
         }
     }];
+}
+
+#pragma mark - private methods
+
+- (void) postFailure: (NSError *) error
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)])
+    {
+        [self.delegate request:self didFailWithError:error];                    
+    }
+}
+
+- (void) postSuccess: (NSDictionary *) json
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(request:didSucceed:)])
+    {
+        [self.delegate request:self didSucceed:json];                    
+    }
 }
 
 @end
