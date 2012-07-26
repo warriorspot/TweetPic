@@ -26,6 +26,8 @@
     
     for(NSString *string in components)
     {
+        if([string length] > 0 && [string characterAtIndex: 0] == '@') continue;
+        
         if([string length] > [longestWord length])
         {
             longestWord = string;
