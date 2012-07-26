@@ -21,8 +21,8 @@
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self 
-                      selector:@selector(didReceiveTweetPicsNotification:) 
-                          name:TweetPicsCreatedNotification 
+                      selector:@selector(didReceiveTweetPicNotification:) 
+                          name:TweetPicCreatedNotification 
                         object:nil];
 }
 
@@ -51,6 +51,7 @@
     
     if(searchTerm != nil || [searchTerm length] > 0)
     {
+        [self.tweetPics removeAllObjects];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tweetPicTableView animated:YES];
         hud.labelText = NSLocalizedString(@"LOADING_LABEL", NULL);
         
@@ -97,19 +98,18 @@
 
 #pragma mark - private methods
 
-- (void) didReceiveTweetPicsNotification: (NSNotification *) notification
+- (void) didReceiveTweetPicNotification: (NSNotification *) notification
 {
     [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
     
-    NSArray *newTweetPics = [notification.userInfo valueForKey:TweetPicsKey];
+    TweetPic *tweetPic = [notification.userInfo valueForKey:TweetPicKey];
     
     if(self.tweetPics == nil)
     {
         self.tweetPics = [[NSMutableArray alloc] init];
     }
     
-    [self.tweetPics removeAllObjects];
-    [self.tweetPics addObjectsFromArray:newTweetPics];
+    [self.tweetPics addObject:tweetPic];
     [self.tweetPicTableView reloadData];
 }
 

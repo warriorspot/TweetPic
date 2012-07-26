@@ -1,6 +1,6 @@
 
 @interface TweetPicViewController()
 
-- (void) didReceiveTweetPicsNotification: (NSNotification *) notification;
+- (void) didReceiveTweetPicNotification: (NSNotification *) notification;
 
 @end
