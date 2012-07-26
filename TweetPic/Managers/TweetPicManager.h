@@ -5,12 +5,11 @@
 @class MovieRequest;
 @class TweetRequest;
 
-@interface TweetPicManager : NSObject <RequestDelegate>
-
-@property (nonatomic, strong) MovieRequest *movieRequest;
-@property (nonatomic, strong) TweetRequest *tweetRequest;
+@interface TweetPicManager : NSObject <RequestDelegate, UIAlertViewDelegate>
 
 @end
 
+extern NSString * const TweetPicCreatedNotification;
+extern NSString * const TweetPicKey;
 extern NSString * const TweetPicsCreatedNotification;
 extern NSString * const TweetPicsKey;

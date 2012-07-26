@@ -9,9 +9,9 @@
 
 @implementation TweetPicManager
 
-@synthesize movieRequest;
 @synthesize tweetRequest;
-@synthesize tweetToRequest;
+@synthesize tweets;
+@synthesize movieRequest;
 
 - (id) init
 {
@@ -41,30 +41,75 @@
 
 - (void) request:(Request *)request didSucceed:(NSDictionary *) json;
 {
-    NSArray *results = [json valueForKey:@"results"];
-    NSMutableArray *tweetPics = [NSMutableArray array];
-    
-    for(NSDictionary *result in results)
+    if([request isKindOfClass:[TweetRequest class]])
     {
-        NSString *tweet = [result valueForKey:@"text"];
-        NSString *tweetId = [result valueForKey: @"stringId"];
-        NSLog(@"Tweet: %@", tweet);
+        NSArray *results = [json valueForKey:@"results"];
         
-        Tweet *newTweet = [[Tweet alloc] initWithTweetId: tweetId tweet: tweet];
+        for(NSDictionary *result in results)
+        {
+            NSString *tweet = [result valueForKey:@"text"];
+            NSString *tweetId = [result valueForKey: @"id_str"];
+            NSLog(@"Tweet: %@", tweet);
+            
+            Tweet *newTweet = [[Tweet alloc] initWithTweetId: tweetId tweet: tweet];
+            
+            if(self.tweets == nil)
+            {
+                self.tweets = [NSMutableArray arrayWithCapacity:[result count]];
+            }
+            
+            [self.tweets addObject:newTweet];
+        }
+        
+        [self fetchImageForTweet:[self.tweets lastObject]];
     }
+    else if([request isKindOfClass:[MovieRequest class]])
+    {
+        Tweet *tweet =  [self.tweets lastObject];
+        UIImage *image = nil;
+        
+        NSArray *movies = [json valueForKey:@"movies"];
+        if([movies count] > 0)
+        {
+            NSDictionary *movie = [movies objectAtIndex:0];
+            NSDictionary *posters = [movie valueForKey:@"posters"];
+            NSURL *posterURL = [NSURL URLWithString:[posters valueForKey:@"thumbnail"]];
+            image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL: posterURL]];
+        }
+        else
+        {
+            image = [UIImage imageNamed:@"beer.jpg"];
+        }
+        
+        TweetPic *tweetPic = [[TweetPic alloc] initWithTweet:tweet.tweet image:image];
+        
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:tweetPic
+                                                             forKey:TweetPicKey];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicCreatedNotification 
+                                                            object:self 
+                                                          userInfo:userInfo];
+        
+        [self.tweets removeLastObject];
+        
+        if([self.tweets count] > 0)
+        {
+            [self performSelector: @selector(fetchImageForTweet:) withObject:[self.tweets lastObject] afterDelay:0.0f];
+        }
+    }
+}
+
+#pragma mark - UIAlertView delegate methods
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
     
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:tweetPics 
-                                                          forKey:TweetPicsKey];
-    [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicsCreatedNotification 
-                                                        object:self 
-                                                      userInfo:userInfo];
 }
 
 #pragma mark - private methods
 
 - (void) didEnterSearchTerm: (NSNotification *) notification
 {
-    if(self.movieRequest.active || self.tweetRequest.active)
+    if((self.movieRequest && self.movieRequest.active) || self.tweetRequest.active)
     {
         return;
     }
@@ -74,21 +119,20 @@
     [self.tweetRequest startWithSearchTerm:[notification.userInfo valueForKey: SearchTermKey]];
 }
 
-- (void) fetchImageForSearchTerm: (NSString *) searchTerm tweetId: (NSString *) tweetId
+- (void) fetchImageForTweet: (Tweet *) tweet
 {
-    if(self.tweetToRequest == nil)
-    {
-        self.tweetToRequest = [NSMutableDictionary dictionary];
-    }
+    NSLog(@"Fetching image for tweet: %@", tweet.tweetId);
     
-    //MovieRequest *movieRequest = [[MovieRequest alloc] init];
-    [self.tweetToRequest setValue: movieRequest forKey: tweetId];
-    
-    //[movieRequest startWithSearchTerm: searchTerm];
+    self.movieRequest = [[MovieRequest alloc] init];
+    self.movieRequest.delegate = self;
+    NSString *searchTerm = [tweet longestWordInTweet];
+    [self.movieRequest startWithSearchTerm: searchTerm];
 }
 
 
 @end
 
-NSString * const TweetPicsCreatedNotification = @"TweetPicCreated";
+NSString * const TweetPicCreatedNotification = @"TweetPicCreated";
+NSString * const TweetPicsCreatedNotification = @"TweetPicsCreated";
 NSString * const TweetPicsKey = @"TweetPicsKey";
+NSString * const TweetPicKey = @"TweetPicKey";

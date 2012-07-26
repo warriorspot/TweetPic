@@ -1,10 +1,13 @@
 
+@class Tweet;
 
 @interface TweetPicManager()
 
-@property (nonatomic, strong) NSMutableDictionary *tweetToRequest;
+@property (nonatomic, strong) TweetRequest *tweetRequest;
+@property (nonatomic, strong) NSMutableArray *tweets;
+@property (nonatomic, strong) MovieRequest *movieRequest;
 
 - (void) didEnterSearchTerm: (NSNotification *) notification;
-- (void) fetchImageForSearchTerm: (NSString *) searchTerm tweetId: (NSString *) tweetId;
+- (void) fetchImageForTweet: (Tweet *) tweet;
 
 @end
