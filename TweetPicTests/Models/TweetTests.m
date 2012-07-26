@@ -7,7 +7,7 @@
 - (void) testLongestWordInTweet
 {
     NSString *tweet = @"a an big word words amalgamation no";
-    NSString *tweet2 = @"foo bar baz";
+    NSString *tweet2 = @"@foo bar baz";
     NSString *tweet3 = @"a cheeseburger dog";
     
     Tweet *t1 = [[Tweet alloc] initWithTweetId:@"1" tweet:tweet];
@@ -18,7 +18,7 @@
     STAssertTrue([result isEqualToString: @"amalgamation"], @"longest word should be amalgamation");
     
     result = [t2 longestWordInTweet];
-    STAssertTrue([result isEqualToString: @"foo"], @"longest word should be foo");
+    STAssertTrue([result isEqualToString: @"bar"], @"longest word should be bar");
     
     result = [t3 longestWordInTweet];
     STAssertTrue([result isEqualToString: @"cheeseburger"], @"longest word should be cheeseburger");
