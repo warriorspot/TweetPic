@@ -8,6 +8,6 @@
 @property (nonatomic, strong) MovieRequest *movieRequest;
 
 - (void) didEnterSearchTerm: (NSNotification *) notification;
-- (void) fetchImageForTweet: (Tweet *) tweet;
+- (void) fetchMovieForTweet: (Tweet *) tweet;
 
 @end

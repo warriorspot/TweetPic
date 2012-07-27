@@ -1,4 +1,5 @@
 
+#import "Movie.h"
 #import "MovieRequest.h"
 #import "Tweet.h"
 #import "TweetPic.h"
@@ -39,64 +40,22 @@
     NSLog(@"Request failed: %@", [error localizedDescription]);
 }
 
-- (void) request:(Request *)request didSucceed:(NSDictionary *) json;
+- (void) request:(Request *)request didSucceedWithObject:(id)object;
 {
     if([request isKindOfClass:[TweetRequest class]])
     {
-        NSArray *results = [json valueForKey:@"results"];
-        
-        for(NSDictionary *result in results)
-        {
-            NSString *tweet = [result valueForKey:@"text"];
-            NSString *tweetId = [result valueForKey: @"id_str"];
-            NSLog(@"Tweet: %@", tweet);
-            
-            Tweet *newTweet = [[Tweet alloc] initWithTweetId: tweetId tweet: tweet];
-            
-            if(self.tweets == nil)
-            {
-                self.tweets = [NSMutableArray arrayWithCapacity:[result count]];
-            }
-            
-            [self.tweets addObject:newTweet];
-        }
-        
-        [self fetchImageForTweet:[self.tweets lastObject]];
+        NSArray *newTweets = (NSArray *) object;
+        self.tweets = [NSMutableArray arrayWithArray:newTweets];       
+        [self fetchMovieForTweet:[self.tweets lastObject]];
     }
     else if([request isKindOfClass:[MovieRequest class]])
     {
-        Tweet *tweet =  [self.tweets lastObject];
-        UIImage *image = nil;
-        
-        NSArray *movies = [json valueForKey:@"movies"];
-        if([movies count] > 0)
-        {
-            NSDictionary *movie = [movies objectAtIndex:0];
-            NSDictionary *posters = [movie valueForKey:@"posters"];
-            NSURL *posterURL = [NSURL URLWithString:[posters valueForKey:@"thumbnail"]];
-            image = [[UIImage alloc] initWithData:[NSData dataWithContentsOfURL: posterURL]];
-        }
-        else
-        {
-            image = [UIImage imageNamed:@"beer.jpg"];
-        }
-        
-        TweetPic *tweetPic = [[TweetPic alloc] initWithTweet:tweet.tweet image:image];
-        
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:tweetPic
-                                                             forKey:TweetPicKey];
-        [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicCreatedNotification 
-                                                            object:self 
-                                                          userInfo:userInfo];
-        
-        [self.tweets removeLastObject];
-        
-        if([self.tweets count] > 0)
-        {
-            [self performSelector: @selector(fetchImageForTweet:) withObject:[self.tweets lastObject] afterDelay:0.0f];
-        }
+        NSArray *movies = object;
+                
+        [self performSelectorInBackground:@selector(downloadMovieImageForRequestResults:) withObject:movies];
     }
 }
+
 
 #pragma mark - UIAlertView delegate methods
 
@@ -119,7 +78,33 @@
     [self.tweetRequest startWithSearchTerm:[notification.userInfo valueForKey: SearchTermKey]];
 }
 
-- (void) fetchImageForTweet: (Tweet *) tweet
+- (void) downloadMovieImageForRequestResults: (NSArray *) movies
+{
+    @autoreleasepool 
+    {
+    Tweet *tweet =  [self.tweets lastObject];
+    TweetPic *tweetPic = [[TweetPic alloc] init];
+    tweetPic.tweet = tweet.tweet;
+    
+    UIImage *image = nil;
+    
+    if([movies count] > 0)
+    {
+        Movie *movie = [movies objectAtIndex:0];
+        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:movie.imageURL]];
+    }
+    else
+    {
+        image = [UIImage imageNamed:@"beer.jpg"];
+    }
+    
+    tweetPic.image = image;
+    
+    [self performSelectorOnMainThread:@selector(postNotificationForTweetPic:) withObject:tweetPic waitUntilDone:NO];
+    }
+}
+
+- (void) fetchMovieForTweet: (Tweet *) tweet
 {
     NSLog(@"Fetching image for tweet: %@", tweet.tweetId);
     
@@ -129,6 +114,21 @@
     [self.movieRequest startWithSearchTerm: searchTerm];
 }
 
+- (void) postNotificationForTweetPic: (TweetPic *) tweetPic
+{
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:tweetPic
+                                                         forKey:TweetPicKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicCreatedNotification 
+                                                        object:self 
+                                                      userInfo:userInfo];
+    [self.tweets removeLastObject];
+    
+    if([self.tweets count] > 0)
+    {
+        [self fetchMovieForTweet:[self.tweets lastObject]];
+    }
+}
 
 @end
 
