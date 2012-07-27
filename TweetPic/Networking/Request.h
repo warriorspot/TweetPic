@@ -16,7 +16,7 @@
 @protocol RequestDelegate
 
 @optional
-- (void) request: (Request *) request didSucceed: (NSDictionary *) json;
+- (void) request: (Request *) request didSucceedWithObject: (id) object;
 - (void) request: (Request *) request didFailWithError: (NSError *) error;
 
 @end

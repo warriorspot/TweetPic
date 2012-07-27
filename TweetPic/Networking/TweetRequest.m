@@ -1,4 +1,5 @@
 
+#import "Tweet.h"
 #import "TweetRequest.h"
 
 @implementation TweetRequest
@@ -76,10 +77,30 @@
 
 - (void) postSuccess: (NSDictionary *) json
 {
-    if(self.delegate && [self.delegate respondsToSelector:@selector(request:didSucceed:)])
+    NSArray *tweets = [self tweetsFromJSON:json];
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(request:didSucceedWithObject:)])
     {
-        [self.delegate request:self didSucceed:json];                    
+        [self.delegate request:self didSucceedWithObject:tweets];                    
     }
+}
+
+- (NSArray *) tweetsFromJSON: (NSDictionary *) json
+{
+    NSArray *results = [json valueForKey:@"results"];
+    NSMutableArray *tweets = [NSMutableArray arrayWithCapacity:[results count]];
+
+    for(NSDictionary *result in results)
+    {
+        NSString *tweetString = [result valueForKey:@"text"];
+        NSString *tweetId = [result valueForKey: @"id_str"];
+       
+        Tweet *tweet = [[Tweet alloc] initWithTweetId:tweetId tweet:tweetString];
+        
+        [tweets addObject:tweet];
+    }
+    
+    return tweets;
 }
 
 @end

@@ -1,4 +1,5 @@
 
+#import "Movie.h"
 #import "MovieRequest.h"
 #import "SimpleRESTRequest.h"
 
@@ -67,6 +68,26 @@
 
 #pragma mark - private methods
 
+- (NSArray *) moviesFromJSON: (NSDictionary *) json
+{
+    NSArray *moviesInJSON = [json valueForKey:@"movies"];
+    NSMutableArray *movies = [NSMutableArray arrayWithCapacity:[moviesInJSON count]];
+    
+    for(NSDictionary *movie in moviesInJSON)
+    {
+        Movie *movieObject = [[Movie alloc] init];
+        movieObject.title = [movie valueForKey:@"title"];
+        NSDictionary *posters = [movie valueForKey:@"posters"];
+        movieObject.imageURL = [NSURL URLWithString:[posters valueForKey:@"thumbnail"]];
+        
+        NSLog(@"%@", [movieObject description]);    
+        
+        [movies addObject:movieObject];
+    }
+    
+    return movies;
+}
+
 - (void) requestFailed: (NSNotification *) notification
 {
     NSLog(@"MovieRequest failed");
@@ -79,10 +100,14 @@
 - (void) requestSucceeded: (NSNotification *) notification
 {
     NSLog(@"MovieRequest succeeded");
+    
     NSDictionary *json = [notification.userInfo valueForKey:SimpleRESTRequestJSONKey];
-    if(self.delegate && [self.delegate respondsToSelector:@selector(request:didSucceed:)])
+    
+    NSArray *movies = [self moviesFromJSON:json];
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(request:didSucceedWithObject:)])
     {
-        [self.delegate request:self didSucceed:json];
+        [self.delegate request:self didSucceedWithObject:movies];
     }
 }
 
