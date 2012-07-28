@@ -1,8 +1,8 @@
 
 #import <Foundation/Foundation.h>
 
-/// A Tweet instance encapsulates the text
-/// of a tweet and the string ID of that tweet. A Tweet instance
+/// A Tweet instance encapsulates the date, text
+/// and the string ID of that tweet. A Tweet instance
 /// is immutable.  Use the designated initializer to
 /// set the values of tweetId and tweet.
 ///
