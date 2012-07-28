@@ -72,6 +72,33 @@
 
 #pragma mark - private methods
 
+- (NSDate *) dateFromTwitterDateString: (NSString *) dateString
+{
+    NSDate *date = nil;
+    
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@",+"];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"d MMM y HH:mm:ss"];
+    
+    NSArray *dateComponents = [dateString componentsSeparatedByCharactersInSet:set];
+    
+    if([dateComponents count] == 3)
+    {
+        NSString *dateString = [dateComponents objectAtIndex:1];
+        dateString = [dateString stringByTrimmingCharactersInSet:
+                      [NSCharacterSet characterSetWithCharactersInString:@" "]];
+        date = [dateFormatter dateFromString:dateString];
+        
+        if(date == nil) date = [NSDate date];
+    }
+    else
+    {
+        date = [NSDate date];
+    }
+    
+    return date;
+}
+
 - (void) postFailure: (NSError *) error
 {
     if(self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)])
@@ -94,13 +121,14 @@
 {
     NSArray *results = [json valueForKey:@"results"];
     NSMutableArray *tweets = [NSMutableArray arrayWithCapacity:[results count]];
-
+    
     for(NSDictionary *result in results)
     {
+        NSDate *date = [self dateFromTwitterDateString:[result valueForKey:@"created_at"]];
         NSString *tweetString = [result valueForKey:@"text"];
         NSString *tweetId = [result valueForKey: @"id_str"];
        
-        Tweet *tweet = [[Tweet alloc] initWithTweetId:tweetId tweet:tweetString];
+        Tweet *tweet = [[Tweet alloc] initWithTweetId:tweetId tweet:tweetString date:date];
         
         [tweets addObject:tweet];
     }

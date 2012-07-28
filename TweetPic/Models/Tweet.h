@@ -8,12 +8,13 @@
 ///
 @interface Tweet : NSObject
 
+@property (nonatomic, readonly, strong) NSDate *date;
 @property (nonatomic, readonly, strong) NSString *tweetId;
 @property (nonatomic, readonly, strong) NSString *tweet;
 
 /// Designated Intializer
 ///
-- (id) initWithTweetId: (NSString *) tweetId tweet: (NSString *) tweet;
+- (id) initWithTweetId: (NSString *) tweetId tweet: (NSString *) tweet date: (NSDate *) date;
 
 /// Returns the longest word in the 'tweet' property of the Tweet
 ///
