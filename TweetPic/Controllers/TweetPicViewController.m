@@ -164,7 +164,7 @@
     if(animated)
     {
         [UIView beginAnimations:@"toggle_view" context:nil];
-        [UIView setAnimationDuration:0.5f];
+        [UIView setAnimationDuration:0.3f];
     }
     
     toggleView.alpha = newAlpha;
