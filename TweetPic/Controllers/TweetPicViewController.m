@@ -26,6 +26,10 @@
                       selector:@selector(didReceiveTweetPicNotification:) 
                           name:TweetPicCreatedNotification 
                         object:nil];
+    [defaultCenter addObserver:self
+                      selector:@selector(tweetPicsCreatedNotification:)
+                          name:TweetPicsCreatedNotification
+                        object:nil];
 }
 
 - (void) viewDidUnload
@@ -49,6 +53,8 @@
     if(searchTerm != nil || [searchTerm length] > 0)
     {
         [self.tweetPics removeAllObjects];
+        tweetPicCount = 0;
+        
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tweetPicTableView animated:YES];
         hud.labelText = NSLocalizedString(@"LOADING_LABEL", NULL);
         
@@ -111,6 +117,11 @@
     
     [self.tweetPics addObject:tweetPic];
     [self.tweetPicTableView reloadData];
+}
+
+- (void) tweetPicsCreatedNotification: (NSNotification *) notification
+{
+    self.tweetPicCountLabel.text = [NSString stringWithFormat:@"Created %d TweetPics", tweetPicCount];
 }
 
 @end
