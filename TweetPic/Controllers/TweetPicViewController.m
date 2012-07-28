@@ -129,11 +129,24 @@
 
 - (void) sortTweetPics:(id)sender
 {
+    NSArray *sortedArray = nil;
     
+    if(self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByTweet:)];
+    }
+    else if(self.segmentedControl.selectedSegmentIndex == 1)
+    {
+        sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByDate:)];
+    }
+    
+    self.tweetPics = [NSMutableArray arrayWithArray: sortedArray];
+    
+    [self.tweetPicTableView reloadData];
 }
 
 #pragma mark - private methods
-
+    
 - (void) keyboardDidHide:(NSNotification *)notification
 {
     self.dismissKeyboardButton.enabled = NO;
