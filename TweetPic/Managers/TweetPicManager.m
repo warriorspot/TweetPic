@@ -138,7 +138,8 @@ static NSUInteger const MaximumConcurrentOperations = 10;
     FetchMovieOperation *operation = (FetchMovieOperation *) object;
     
     TweetPic *tweetPic = [[TweetPic alloc] initWithTweet:operation.tweet.tweet
-                                                   image:operation.movieImage];
+                                                   image:operation.movieImage
+                                                    date:operation.tweet.date];
     
     [self performSelectorOnMainThread:@selector(postNotificationForTweetPic:)
                            withObject:tweetPic

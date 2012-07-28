@@ -5,6 +5,9 @@
 ///
 @interface TweetPic : NSObject
 
+/// The date of the tweet the tweet string came from
+@property (nonatomic, strong) NSDate *date;
+
 /// The tweet
 @property (nonatomic, strong) NSString *tweet;
 
@@ -13,7 +16,7 @@
 
 /// Designated initializer
 ///
-- (id) initWithTweet: (NSString *) tweet image: (UIImage *) image;
+- (id) initWithTweet: (NSString *) tweet image: (UIImage *) image date: (NSDate *) date;
 
 
 @end
