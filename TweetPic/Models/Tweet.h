@@ -16,8 +16,5 @@
 ///
 - (id) initWithTweetId: (NSString *) tweetId tweet: (NSString *) tweet date: (NSDate *) date;
 
-/// Returns the longest word in the 'tweet' property of the Tweet
-///
-- (NSString *) longestWordInTweet;
 
 @end

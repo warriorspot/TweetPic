@@ -20,23 +20,4 @@
     return self;
 }
 
-- (NSString *) longestWordInTweet
-{
-    NSString *longestWord = @"";
-    
-    NSArray *components = [tweet componentsSeparatedByString: @" "];
-    
-    for(NSString *string in components)
-    {
-        if([string length] > 0 && [string characterAtIndex: 0] == '@') continue;
-        
-        if([string length] > [longestWord length])
-        {
-            longestWord = string;
-        }
-    }
-    
-    return longestWord;
-}
-
 @end
