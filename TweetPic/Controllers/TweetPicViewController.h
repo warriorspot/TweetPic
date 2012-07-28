@@ -3,9 +3,10 @@
 
 @interface TweetPicViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) IBOutlet UISearchBar *tweetSearchBar;
-@property (nonatomic, strong) IBOutlet UITableView *tweetPicTableView;
-@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, assign) IBOutlet UISearchBar *tweetSearchBar;
+@property (nonatomic, assign) IBOutlet UITableView *tweetPicTableView;
+@property (nonatomic, assign) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic, assign) IBOutlet UILabel *tweetPicCountLabel;
 @property (nonatomic, strong) NSMutableArray *tweetPics;
 
 @end

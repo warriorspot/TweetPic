@@ -12,6 +12,8 @@
 @synthesize tweetSearchBar;
 @synthesize tweetPicTableView;
 @synthesize segmentedControl;
+@synthesize tweetPicCountLabel;
+@synthesize tweetPicCount;
 
 #pragma mark - UIViewController methods
 
@@ -29,11 +31,6 @@
 - (void) viewDidUnload
 {
     [super viewDidUnload];
-    
-    self.tweetPics = nil;
-    self.tweetSearchBar = nil;
-    self.tweetPicTableView = nil;
-    self.segmentedControl = nil;
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -101,6 +98,9 @@
 - (void) didReceiveTweetPicNotification: (NSNotification *) notification
 {
     [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
+    
+    tweetPicCount++;
+    self.tweetPicCountLabel.text = [NSString stringWithFormat:@"%d", tweetPicCount];
     
     TweetPic *tweetPic = [notification.userInfo valueForKey:TweetPicKey];
     
