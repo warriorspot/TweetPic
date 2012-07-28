@@ -155,6 +155,11 @@
 
 - (void) sortTweetPics:(id)sender
 {
+    if(self.tweetPics == nil || [self.tweetPics count] == 0)
+    {
+        return;
+    }
+    
     NSArray *sortedArray = nil;
     
     if(self.segmentedControl.selectedSegmentIndex == 0)
@@ -168,7 +173,9 @@
     
     self.tweetPics = [NSMutableArray arrayWithArray: sortedArray];
     
+    [self toggleView:self.tweetPicTableView visible:NO animated:NO];
     [self.tweetPicTableView reloadData];
+    [self toggleView:self.tweetPicTableView visible:YES animated:YES];
 }
 
 #pragma mark - private methods
