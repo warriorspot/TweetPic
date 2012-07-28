@@ -4,11 +4,21 @@
 #import "Tweet.h"
 #import "TweetPic.h"
 #import "TweetPicManager.h"
-#import "TweetPicManager+Private.h"
 #import "TweetPicViewController.h"
 #import "TweetRequest.h"
 
 static NSUInteger const MaximumConcurrentOperations = 10;
+
+@interface TweetPicManager()
+
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
+@property (nonatomic, strong) TweetRequest *tweetRequest;
+
+- (void) didEnterSearchTerm: (NSNotification *) notification;
+- (void) fetchMovieForTweet: (Tweet *) tweet;
+- (void) postNotificationForTweetPic: (TweetPic *) tweetPic;
+
+@end
 
 @implementation TweetPicManager
 

@@ -101,7 +101,6 @@
 		44C8A9A915BF6CB7009E97A8 /* TweetPic-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TweetPic-Info.plist"; sourceTree = "<group>"; };
 		44C8A9AA15BF6CB7009E97A8 /* TweetPic-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPic-Prefix.pch"; sourceTree = "<group>"; };
 		44C8A9B015BF6CEE009E97A8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		44C8A9B915BF8641009E97A8 /* TweetPicManager+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPicManager+Private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,7 +306,6 @@
 			isa = PBXGroup;
 			children = (
 				44C8A99F15BF6C75009E97A8 /* TweetPicManager.h */,
-				44C8A9B915BF8641009E97A8 /* TweetPicManager+Private.h */,
 				44C8A9A015BF6C75009E97A8 /* TweetPicManager.m */,
 			);
 			name = Managers;
