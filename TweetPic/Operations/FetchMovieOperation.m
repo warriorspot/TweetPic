@@ -35,6 +35,8 @@
     return self;
 }
 
+#pragma mark - instance methods
+
 - (void) main
 {
     NSLog(@"Starting operation for tweet %@", self.tweet.tweetId);
@@ -47,15 +49,17 @@
     while(!done && index < [searchTerms count])
     {
         if(self.isCancelled) break;
+        
         currentSearchTerm = [searchTerms objectAtIndex:index];
         [self requestMoviesForSearchTerm:currentSearchTerm];
         CFRunLoopRun();
         index++;
     }
     
+    // We couldn't find a movie poster
     if(self.movieImage == nil)
     {
-        [self downloadMovieImageForRequestResults:nil];
+        self.movieImage = [UIImage imageNamed:@"beer.jpg"];
     }
 }
 
@@ -76,7 +80,8 @@
     {
         Movie *movie = [movies objectAtIndex:0];
         self.movieImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:movie.imageURL]];
-    }    
+    }
+    
     done = YES;
 }
 

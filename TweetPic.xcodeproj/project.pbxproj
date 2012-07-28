@@ -28,7 +28,7 @@
 		2682CA2515BA32AC00AA15B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */; };
 		2682CA2A15BA377600AA15B4 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2915BA377600AA15B4 /* Request.m */; };
 		2682CA2C15BA3EDB00AA15B4 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */; };
-		4473702E15C2CD0C00B98961 /* FetchMovieOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4473702D15C2CD0C00B98961 /* FetchMovieOperation.m */; };
+		26D51B5515C43568006C33E6 /* FetchMovieOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D51B5415C43568006C33E6 /* FetchMovieOperation.m */; };
 		44887DE015C031940001F256 /* TweetPicManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44887DDE15C031940001F256 /* TweetPicManagerTests.m */; };
 		44887DE315C031A60001F256 /* TweetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44887DE215C031A60001F256 /* TweetTests.m */; };
 		44C8A99C15BF6C19009E97A8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 44C8A99B15BF6C19009E97A8 /* Reachability.m */; };
@@ -84,8 +84,8 @@
 		2682CA2815BA377600AA15B4 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		2682CA2915BA377600AA15B4 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		4473702C15C2CD0C00B98961 /* FetchMovieOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchMovieOperation.h; sourceTree = "<group>"; };
-		4473702D15C2CD0C00B98961 /* FetchMovieOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchMovieOperation.m; sourceTree = "<group>"; };
+		26D51B5315C43568006C33E6 /* FetchMovieOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchMovieOperation.h; sourceTree = "<group>"; };
+		26D51B5415C43568006C33E6 /* FetchMovieOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchMovieOperation.m; sourceTree = "<group>"; };
 		44887DDD15C031940001F256 /* TweetPicManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManagerTests.h; sourceTree = "<group>"; };
 		44887DDE15C031940001F256 /* TweetPicManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicManagerTests.m; sourceTree = "<group>"; };
 		44887DE115C031A60001F256 /* TweetTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetTests.h; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 				44C8A99E15BF6C75009E97A8 /* Managers */,
 				2682C9F415B9063300AA15B4 /* Models */,
 				2682C9F315B9063300AA15B4 /* Networking */,
+				26D51B5215C43568006C33E6 /* Operations */,
 				2682C9F215B9063300AA15B4 /* Views */,
 				2682C9E115B8FDB600AA15B4 /* TweetPicTests */,
 				2682C9C215B8FDB600AA15B4 /* Frameworks */,
@@ -262,8 +263,6 @@
 				44C8A9A815BF6CB7009E97A8 /* main.m */,
 				44C8A9A915BF6CB7009E97A8 /* TweetPic-Info.plist */,
 				44C8A9AA15BF6CB7009E97A8 /* TweetPic-Prefix.pch */,
-				4473702C15C2CD0C00B98961 /* FetchMovieOperation.h */,
-				4473702D15C2CD0C00B98961 /* FetchMovieOperation.m */,
 			);
 			name = Application;
 			path = TweetPic/Application;
@@ -276,6 +275,16 @@
 				2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */,
 			);
 			path = External;
+			sourceTree = "<group>";
+		};
+		26D51B5215C43568006C33E6 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				26D51B5315C43568006C33E6 /* FetchMovieOperation.h */,
+				26D51B5415C43568006C33E6 /* FetchMovieOperation.m */,
+			);
+			name = Operations;
+			path = TweetPic/Operations;
 			sourceTree = "<group>";
 		};
 		44887DDC15C031940001F256 /* Managers */ = {
@@ -439,7 +448,7 @@
 				44C8A9A115BF6C75009E97A8 /* TweetPicManager.m in Sources */,
 				44C8A9AB15BF6CB7009E97A8 /* AppDelegate.m in Sources */,
 				44C8A9AE15BF6CB7009E97A8 /* main.m in Sources */,
-				4473702E15C2CD0C00B98961 /* FetchMovieOperation.m in Sources */,
+				26D51B5515C43568006C33E6 /* FetchMovieOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
