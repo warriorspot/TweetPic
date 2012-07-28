@@ -8,6 +8,7 @@
 
 @implementation TweetPicViewController
 
+@synthesize dismissKeyboardButton;
 @synthesize tweetPics;
 @synthesize tweetSearchBar;
 @synthesize tweetPicTableView;
@@ -35,6 +36,16 @@
     [defaultCenter addObserver:self
                       selector:@selector(tweetPicErrorNotification:)
                           name:TweetPicErrorNotification
+                        object:nil];
+    
+    [defaultCenter addObserver:self
+                      selector:@selector(keyboardDidShow:)
+                          name:UIKeyboardDidShowNotification
+                        object:nil];
+    
+    [defaultCenter addObserver:self
+                      selector:@selector(keyboardDidHide:)
+                          name:UIKeyboardDidHideNotification
                         object:nil];
 }
 
@@ -109,6 +120,21 @@
 }
 
 #pragma mark - private methods
+
+- (IBAction)dismissKeyboard:(id)sender
+{
+    [self.view endEditing:YES];
+}
+
+- (void) keyboardDidHide:(NSNotification *)notification
+{
+    self.dismissKeyboardButton.enabled = NO;
+}
+
+- (void) keyboardDidShow:(NSNotification *)notification
+{
+    self.dismissKeyboardButton.enabled = YES;
+}
 
 - (void) showMessageWithTitle: (NSString *) title message: (NSString *) message
 {
