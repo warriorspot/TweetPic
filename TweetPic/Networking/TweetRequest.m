@@ -24,11 +24,11 @@
     
     NSURL *url = [NSURL URLWithString: baseURL];
     
-    request = [[TWRequest alloc] initWithURL: url
+    self.request = [[TWRequest alloc] initWithURL: url
                                   parameters: nil 
                                requestMethod: TWRequestMethodGET];
     
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
+    [self.request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error)
     {
         active = NO;
         
@@ -63,6 +63,11 @@
             [self performSelectorOnMainThread:@selector(postFailure:) withObject:error waitUntilDone:NO];
         }
     }];
+}
+
+- (void) stop
+{
+    // Cant be stopped
 }
 
 #pragma mark - private methods
