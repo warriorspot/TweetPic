@@ -104,7 +104,7 @@
 						<bool key="IBUIAlwaysBounceVertical">YES</bool>
 						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>
-						<bool key="IBUIShowsSelectionImmediatelyOnTouchBegin">YES</bool>
+						<bool key="IBUIAllowsSelection">NO</bool>
 						<float key="IBUIRowHeight">44</float>
 						<float key="IBUISectionHeaderHeight">22</float>
 						<float key="IBUISectionFooterHeight">22</float>
@@ -142,7 +142,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIButton" id="499740012">
+					<object class="IBUIButton" id="921211184">
 						<reference key="NSNextResponder" ref="578905013"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 44}, {320, 386}}</string>
@@ -239,7 +239,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dismissKeyboardButton</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="499740012"/>
+						<reference key="destination" ref="921211184"/>
 					</object>
 					<int key="connectionID">18</int>
 				</object>
@@ -270,7 +270,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">dismissKeyboard:</string>
-						<reference key="source" ref="499740012"/>
+						<reference key="source" ref="921211184"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -304,7 +304,7 @@
 							<reference ref="948530978"/>
 							<reference ref="465890449"/>
 							<reference ref="318257500"/>
-							<reference ref="499740012"/>
+							<reference ref="921211184"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -334,7 +334,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="499740012"/>
+						<reference key="object" ref="921211184"/>
 						<reference key="parent" ref="578905013"/>
 						<string key="objectName">dismissKeyboardButton</string>
 					</object>
