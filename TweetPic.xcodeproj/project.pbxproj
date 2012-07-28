@@ -76,7 +76,6 @@
 		2682CA0C15B908BD00AA15B4 /* TweetPicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicViewController.m; sourceTree = "<group>"; };
 		2682CA0E15B908D900AA15B4 /* TweetPicView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetPicView.xib; sourceTree = "<group>"; };
 		2682CA1015B9090B00AA15B4 /* TweetPicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetPicCell.xib; sourceTree = "<group>"; };
-		2682CA1215B9100400AA15B4 /* TweetPicViewController+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TweetPicViewController+Private.h"; sourceTree = "<group>"; };
 		2682CA1B15B9130600AA15B4 /* TweetPicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicCell.h; sourceTree = "<group>"; };
 		2682CA1C15B9130600AA15B4 /* TweetPicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetPicCell.m; sourceTree = "<group>"; };
 		2682CA2315BA32AC00AA15B4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -246,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				2682CA0B15B908BD00AA15B4 /* TweetPicViewController.h */,
-				2682CA1215B9100400AA15B4 /* TweetPicViewController+Private.h */,
 				2682CA0C15B908BD00AA15B4 /* TweetPicViewController.m */,
 			);
 			name = Controllers;
