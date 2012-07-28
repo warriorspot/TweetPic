@@ -78,6 +78,7 @@
     if (cell == nil) 
     {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TweetPicCell" owner:nil options:nil] objectAtIndex:0];
+        tableView.rowHeight = cell.frame.size.height;
     }
     
     TweetPic *tweetPic = [self.tweetPics objectAtIndex:indexPath.row];
@@ -92,11 +93,6 @@
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section   
 {
     return [self.tweetPics count];
-}
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100.0f;
 }
 
 #pragma mark - private methods
