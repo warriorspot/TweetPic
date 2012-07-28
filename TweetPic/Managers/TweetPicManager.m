@@ -1,6 +1,7 @@
 
 #import "Movie.h"
 #import "MovieRequest.h"
+#import "FetchMovieOperation.h"
 #import "Tweet.h"
 #import "TweetPic.h"
 #import "TweetPicManager.h"
@@ -13,6 +14,7 @@
 @synthesize tweetRequest;
 @synthesize tweets;
 @synthesize movieRequest;
+@synthesize operationQueue;
 
 - (id) init
 {
@@ -23,6 +25,7 @@
                                                  selector:@selector(didEnterSearchTerm:) 
                                                      name:DidEnterSearchTermNotification 
                                                    object:nil];
+        operationQueue = [[NSOperationQueue alloc] init];
     }
     
     return self;
@@ -108,10 +111,13 @@
 {
     NSLog(@"Fetching image for tweet: %@", tweet.tweetId);
     
-    self.movieRequest = [[MovieRequest alloc] init];
-    self.movieRequest.delegate = self;
-    NSString *searchTerm = [tweet longestWordInTweet];
-    [self.movieRequest startWithSearchTerm: searchTerm];
+    FetchMovieOperation *operation = [[FetchMovieOperation alloc] initWithTweet:tweet];
+    [self.operationQueue addOperation:operation];
+    
+//    self.movieRequest = [[MovieRequest alloc] init];
+//    self.movieRequest.delegate = self;
+//    NSString *searchTerm = [tweet longestWordInTweet];
+//    [self.movieRequest startWithSearchTerm: searchTerm];
 }
 
 - (void) postNotificationForTweetPic: (TweetPic *) tweetPic
