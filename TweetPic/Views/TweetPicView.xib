@@ -60,7 +60,6 @@
 						<string key="NSFrame">{{-4, 431}, {328, 30}}</string>
 						<reference key="NSSuperview" ref="578905013"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -94,7 +93,7 @@
 						<string key="NSFrame">{{0, 67}, {320, 363}}</string>
 						<reference key="NSSuperview" ref="578905013"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="948530978"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="652459400">
 							<int key="NSColorSpace">3</int>
@@ -117,7 +116,7 @@
 						<string key="NSFrame">{{0, 44}, {320, 25}}</string>
 						<reference key="NSSuperview" ref="578905013"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="705790851"/>
+						<reference key="NSNextKeyView" ref="312941195"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">6</int>
@@ -149,7 +148,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUIButton" id="705790851">
+					<object class="IBUIButton" id="312941195">
 						<reference key="NSNextResponder" ref="578905013"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 44}, {320, 386}}</string>
@@ -157,7 +156,7 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="465890449"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<object class="NSColor" key="IBUIBackgroundColor" id="569621930">
+						<object class="NSColor" key="IBUIBackgroundColor" id="451303878">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
@@ -243,7 +242,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 								</object>
 							</array>
 						</array>
-						<reference key="NSColor" ref="569621930"/>
+						<reference key="NSColor" ref="451303878"/>
 					</object>
 					<string key="IBUIColorCocoaTouchKeyPath">groupTableViewBackgroundColor</string>
 				</object>
@@ -296,7 +295,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">dismissKeyboardButton</string>
 						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="705790851"/>
+						<reference key="destination" ref="312941195"/>
 					</object>
 					<int key="connectionID">18</int>
 				</object>
@@ -307,6 +306,15 @@ AAgACAAIAAEAAQABAAE</bytes>
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">14</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">sortTweetPics:</string>
+						<reference key="source" ref="948530978"/>
+						<reference key="destination" ref="841351856"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">21</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -327,7 +335,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">dismissKeyboard:</string>
-						<reference key="source" ref="705790851"/>
+						<reference key="source" ref="312941195"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -361,7 +369,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 							<reference ref="948530978"/>
 							<reference ref="465890449"/>
 							<reference ref="318257500"/>
-							<reference ref="705790851"/>
+							<reference ref="312941195"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -391,7 +399,7 @@ AAgACAAIAAEAAQABAAE</bytes>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="705790851"/>
+						<reference key="object" ref="312941195"/>
 						<reference key="parent" ref="578905013"/>
 						<string key="objectName">dismissKeyboardButton</string>
 					</object>
@@ -413,24 +421,27 @@ AAgACAAIAAEAAQABAAE</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">21</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">TweetPicViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">dismissKeyboard:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">dismissKeyboard:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="dismissKeyboard:">id</string>
+						<string key="sortTweetPics:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="dismissKeyboard:">
 							<string key="name">dismissKeyboard:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="sortTweetPics:">
+							<string key="name">sortTweetPics:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="dismissKeyboardButton">UIButton</string>
 						<string key="segmentedControl">UISegmentedControl</string>

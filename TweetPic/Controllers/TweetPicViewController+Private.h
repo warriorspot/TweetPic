@@ -6,6 +6,8 @@
 
 - (IBAction) dismissKeyboard:(id)sender;
 
+- (IBAction) sortTweetPics:(id)sender;
+
 - (void) keyboardDidHide: (NSNotification *) notification;
 
 - (void) keyboardDidShow: (NSNotification *) notification;

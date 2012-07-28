@@ -120,12 +120,19 @@
     return [self.tweetPics count];
 }
 
-#pragma mark - private methods
+#pragma mark - IBActions
 
 - (IBAction)dismissKeyboard:(id)sender
 {
     [self.view endEditing:YES];
 }
+
+- (void) sortTweetPics:(id)sender
+{
+    
+}
+
+#pragma mark - private methods
 
 - (void) keyboardDidHide:(NSNotification *)notification
 {
