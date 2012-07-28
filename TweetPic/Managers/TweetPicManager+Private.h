@@ -11,3 +11,4 @@
 - (void) postNotificationForTweetPic: (TweetPic *) tweetPic;
 
 @end
+

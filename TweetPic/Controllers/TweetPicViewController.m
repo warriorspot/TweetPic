@@ -78,8 +78,9 @@
     {
         [self.tweetPics removeAllObjects];
         tweetPicCount = 0;
+        [self toggleView:self.tweetPicTableView visible:NO animated:YES];
         
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tweetPicTableView animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = NSLocalizedString(@"LOADING_LABEL", NULL);
         
         [searchBar resignFirstResponder];
@@ -147,9 +148,37 @@
     [alertView show];
 }
 
+- (void) toggleView: (UIView *) toggleView visible: (BOOL) visible animated: (BOOL) animated
+{
+    CGFloat newAlpha;
+    
+    if(visible)
+    {
+        newAlpha = 1.0f;
+    }
+    else
+    {
+        newAlpha = 0.0f;
+    }
+    
+    if(animated)
+    {
+        [UIView beginAnimations:@"toggle_view" context:nil];
+        [UIView setAnimationDuration:0.5f];
+    }
+    
+    toggleView.alpha = newAlpha;
+    
+    if(animated)
+    {
+        [UIView commitAnimations];
+    }
+}
+
 - (void) tweetPicNotification: (NSNotification *) notification
 {
-    [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    [self toggleView:self.tweetPicTableView visible:YES animated:YES];
     
     tweetPicCount++;
     self.tweetPicCountLabel.text = [NSString stringWithFormat:@"%d", tweetPicCount];
@@ -167,7 +196,7 @@
 
 - (void) tweetPicErrorNotification: (NSNotification *) notification
 {
-    [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     [self showMessageWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
                        message:[notification.userInfo valueForKey:TweetPicErrorDescriptionKey]];

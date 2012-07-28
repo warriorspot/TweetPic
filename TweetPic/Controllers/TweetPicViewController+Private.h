@@ -12,6 +12,8 @@
 
 - (void) showMessageWithTitle: (NSString *) title message: (NSString *) message;
 
+- (void) toggleView: (UIView *) view visible: (BOOL) isVisible animated: (BOOL) animated;
+
 - (void) tweetPicErrorNotification: (NSNotification *) notification;
 
 - (void) tweetPicNotification: (NSNotification *) notification;
