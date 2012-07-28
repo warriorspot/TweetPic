@@ -41,6 +41,24 @@ static NSUInteger const MaximumConcurrentOperations = 10;
 - (void) request:(Request *)request didFailWithError:(NSError *)error
 {
     NSLog(@"Request failed: %@", [error localizedDescription]);
+
+    NSString *errorMessage = nil;
+    
+    if(error)
+    {
+        errorMessage = [error localizedDescription];
+    }
+    else
+    {
+        errorMessage = NSLocalizedString(@"ERROR_TWITTER_REQUEST_FAILED", nil);
+    }
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject: errorMessage
+                                                         forKey:TweetPicErrorDescriptionKey];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicErrorNotification
+                                                        object:self
+                                                      userInfo:userInfo];
 }
 
 - (void) request:(Request *)request didSucceedWithObject:(id)object;
@@ -55,20 +73,13 @@ static NSUInteger const MaximumConcurrentOperations = 10;
     [self performSelectorInBackground:@selector(wait) withObject:nil];
 }
 
-#pragma mark - UIAlertView delegate methods
-
-- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
-{
-    
-}
-
 #pragma mark - private methods
 
 - (void) didEnterSearchTerm: (NSNotification *) notification
 {
     if(self.tweetRequest.active)
     {
-        [self.tweetRequest stop];
+        return;
     }
     
     self.tweetRequest = [[TweetRequest alloc] init];
@@ -137,6 +148,10 @@ static NSUInteger const MaximumConcurrentOperations = 10;
 @end
 
 NSString * const TweetPicCreatedNotification = @"TweetPicCreated";
-NSString * const TweetPicsCreatedNotification = @"TweetPicsCreated";
-NSString * const TweetPicsKey = @"TweetPicsKey";
 NSString * const TweetPicKey = @"TweetPicKey";
+
+NSString * const TweetPicsCreatedNotification = @"TweetPicsCreated";
+
+NSString * const TweetPicErrorNotification = @"TweetPicError";
+NSString * const TweetPicErrorDescriptionKey = @"TweetPicErrorKey";
+

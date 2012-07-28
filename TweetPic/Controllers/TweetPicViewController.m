@@ -23,12 +23,18 @@
     
     NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self 
-                      selector:@selector(didReceiveTweetPicNotification:) 
+                      selector:@selector(tweetPicNotification:)
                           name:TweetPicCreatedNotification 
                         object:nil];
+    
     [defaultCenter addObserver:self
                       selector:@selector(tweetPicsCreatedNotification:)
                           name:TweetPicsCreatedNotification
+                        object:nil];
+    
+    [defaultCenter addObserver:self
+                      selector:@selector(tweetPicErrorNotification:)
+                          name:TweetPicErrorNotification
                         object:nil];
 }
 
@@ -44,13 +50,20 @@
     return YES;
 }
 
+#pragma mark - UIAlertView delegate methods
+
+- (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+}
+
 #pragma mark - UISearchBarDelegate methods
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     NSString *searchTerm = searchBar.text;
     
-    if(searchTerm != nil || [searchTerm length] > 0)
+    if(searchTerm != nil && [searchTerm length] > 0)
     {
         [self.tweetPics removeAllObjects];
         tweetPicCount = 0;
@@ -97,7 +110,18 @@
 
 #pragma mark - private methods
 
-- (void) didReceiveTweetPicNotification: (NSNotification *) notification
+- (void) showMessageWithTitle: (NSString *) title message: (NSString *) message
+{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:NSLocalizedString(@"MESSAGE_CANCEL_BUTTON_TITLE", nil)
+                                              otherButtonTitles: nil];
+    
+    [alertView show];
+}
+
+- (void) tweetPicNotification: (NSNotification *) notification
 {
     [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
     
@@ -113,6 +137,14 @@
     
     [self.tweetPics addObject:tweetPic];
     [self.tweetPicTableView reloadData];
+}
+
+- (void) tweetPicErrorNotification: (NSNotification *) notification
+{
+    [MBProgressHUD hideHUDForView:self.tweetPicTableView animated:YES];
+    
+    [self showMessageWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                       message:[notification.userInfo valueForKey:TweetPicErrorDescriptionKey]];
 }
 
 - (void) tweetPicsCreatedNotification: (NSNotification *) notification

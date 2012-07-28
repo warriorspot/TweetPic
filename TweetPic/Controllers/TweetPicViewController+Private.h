@@ -3,6 +3,12 @@
 
 @property NSUInteger tweetPicCount;
 
-- (void) didReceiveTweetPicNotification: (NSNotification *) notification;
+- (void) showMessageWithTitle: (NSString *) title message: (NSString *) message;
+
+- (void) tweetPicErrorNotification: (NSNotification *) notification;
+
+- (void) tweetPicNotification: (NSNotification *) notification;
+
+- (void) tweetPicsCreatedNotification: (NSNotification *) notification;
 
 @end

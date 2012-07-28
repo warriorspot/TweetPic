@@ -1,2 +1,9 @@
 
-"LOADING_LABEL" = "Building TweetPics...";
+"MESSAGE_TITLE" = "TweetPic";
+"MESSAGE_CANCEL_BUTTON_TITLE" = "Ok";
+
+"ERROR_TITLE" = "TweetPic Error";
+"ERROR_TWITTER_REQUEST_FAILED" = "Unable to find any matching tweets!";
+
+/* Label shown during creating of TweetPics */
+"LOADING_LABEL" = "Building TweetPics";

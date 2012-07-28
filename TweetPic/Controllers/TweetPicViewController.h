@@ -1,7 +1,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TweetPicViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface TweetPicViewController : UIViewController <UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (nonatomic, assign) IBOutlet UISearchBar *tweetSearchBar;
 @property (nonatomic, assign) IBOutlet UITableView *tweetPicTableView;
