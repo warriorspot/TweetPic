@@ -91,6 +91,7 @@
 - (void) requestFailed: (NSNotification *) notification
 {
     NSLog(@"MovieRequest failed");
+    
     if(self.delegate && [self.delegate respondsToSelector:@selector(request:didFailWithError:)])
     {
         [self.delegate request:self didFailWithError:nil];
