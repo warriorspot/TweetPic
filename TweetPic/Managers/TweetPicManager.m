@@ -1,6 +1,5 @@
 
 #import "Movie.h"
-#import "MovieRequest.h"
 #import "FetchMovieOperation.h"
 #import "Tweet.h"
 #import "TweetPic.h"
@@ -9,11 +8,11 @@
 #import "TweetPicViewController.h"
 #import "TweetRequest.h"
 
+static NSUInteger const MaximumConcurrentOperations = 10;
+
 @implementation TweetPicManager
 
 @synthesize tweetRequest;
-@synthesize tweets;
-@synthesize movieRequest;
 @synthesize operationQueue;
 
 - (id) init
@@ -26,6 +25,7 @@
                                                      name:DidEnterSearchTermNotification 
                                                    object:nil];
         operationQueue = [[NSOperationQueue alloc] init];
+        self.operationQueue.maxConcurrentOperationCount = MaximumConcurrentOperations;
     }
     
     return self;
@@ -45,20 +45,15 @@
 
 - (void) request:(Request *)request didSucceedWithObject:(id)object;
 {
-    if([request isKindOfClass:[TweetRequest class]])
+    NSArray *newTweets = (NSArray *) object;
+    
+    for(Tweet *tweet in newTweets)
     {
-        NSArray *newTweets = (NSArray *) object;
-        self.tweets = [NSMutableArray arrayWithArray:newTweets];       
-        [self fetchMovieForTweet:[self.tweets lastObject]];
+        [self fetchMovieForTweet:tweet];
     }
-    else if([request isKindOfClass:[MovieRequest class]])
-    {
-        NSArray *movies = object;
-                
-        [self performSelectorInBackground:@selector(downloadMovieImageForRequestResults:) withObject:movies];
-    }
+    
+    [self performSelectorInBackground:@selector(wait) withObject:nil];
 }
-
 
 #pragma mark - UIAlertView delegate methods
 
@@ -71,9 +66,9 @@
 
 - (void) didEnterSearchTerm: (NSNotification *) notification
 {
-    if((self.movieRequest && self.movieRequest.active) || self.tweetRequest.active)
+    if(self.tweetRequest.active)
     {
-        return;
+        [self.tweetRequest stop];
     }
     
     self.tweetRequest = [[TweetRequest alloc] init];
@@ -81,43 +76,18 @@
     [self.tweetRequest startWithSearchTerm:[notification.userInfo valueForKey: SearchTermKey]];
 }
 
-- (void) downloadMovieImageForRequestResults: (NSArray *) movies
-{
-    @autoreleasepool 
-    {
-    Tweet *tweet =  [self.tweets lastObject];
-    TweetPic *tweetPic = [[TweetPic alloc] init];
-    tweetPic.tweet = tweet.tweet;
-    
-    UIImage *image = nil;
-    
-    if([movies count] > 0)
-    {
-        Movie *movie = [movies objectAtIndex:0];
-        image = [UIImage imageWithData:[NSData dataWithContentsOfURL:movie.imageURL]];
-    }
-    else
-    {
-        image = [UIImage imageNamed:@"beer.jpg"];
-    }
-    
-    tweetPic.image = image;
-    
-    [self performSelectorOnMainThread:@selector(postNotificationForTweetPic:) withObject:tweetPic waitUntilDone:NO];
-    }
-}
-
 - (void) fetchMovieForTweet: (Tweet *) tweet
 {
     NSLog(@"Fetching image for tweet: %@", tweet.tweetId);
     
     FetchMovieOperation *operation = [[FetchMovieOperation alloc] initWithTweet:tweet];
-    [self.operationQueue addOperation:operation];
     
-//    self.movieRequest = [[MovieRequest alloc] init];
-//    self.movieRequest.delegate = self;
-//    NSString *searchTerm = [tweet longestWordInTweet];
-//    [self.movieRequest startWithSearchTerm: searchTerm];
+    [operation addObserver:self
+                forKeyPath:@"isFinished"
+                   options:NSKeyValueObservingOptionNew
+                   context:NULL];
+    
+    [self.operationQueue addOperation:operation];
 }
 
 - (void) postNotificationForTweetPic: (TweetPic *) tweetPic
@@ -128,12 +98,40 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicCreatedNotification 
                                                         object:self 
                                                       userInfo:userInfo];
-    [self.tweets removeLastObject];
-    
-    if([self.tweets count] > 0)
-    {
-        [self fetchMovieForTweet:[self.tweets lastObject]];
+}
+
+- (void) postNotificationForCompletion
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicsCreatedNotification
+                                                        object:self
+                                                      userInfo:nil];
+}
+
+- (void) wait
+{
+    @autoreleasepool {
+        [self.operationQueue waitUntilAllOperationsAreFinished];
+        [self performSelectorOnMainThread:@selector(postNotificationForCompletion)
+                               withObject:nil
+                            waitUntilDone:NO];
     }
+}
+
+#pragma mark - KVO
+
+- (void) observeValueForKeyPath:(NSString *)keyPath
+                       ofObject:(id)object
+                         change:(NSDictionary *)change
+                        context:(void *)context
+{
+    FetchMovieOperation *operation = (FetchMovieOperation *) object;
+    
+    TweetPic *tweetPic = [[TweetPic alloc] initWithTweet:operation.tweet.tweet
+                                                   image:operation.movieImage];
+    
+    [self performSelectorOnMainThread:@selector(postNotificationForTweetPic:)
+                           withObject:tweetPic
+                        waitUntilDone:NO];
 }
 
 @end

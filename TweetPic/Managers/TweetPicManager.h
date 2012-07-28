@@ -2,7 +2,6 @@
 #import <Foundation/Foundation.h>
 #import "Request.h"
 
-@class MovieRequest;
 @class TweetRequest;
 
 @interface TweetPicManager : NSObject <RequestDelegate, UIAlertViewDelegate>
