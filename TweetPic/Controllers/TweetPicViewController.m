@@ -286,6 +286,8 @@
 
 - (void) tweetPicsCreatedNotification: (NSNotification *) notification
 {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
     self.tweetPicCountLabel.text = [NSString stringWithFormat:@"Created %d TweetPics", tweetPicCount];
 }
 
