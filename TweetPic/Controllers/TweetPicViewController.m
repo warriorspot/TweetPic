@@ -104,7 +104,7 @@
 
 - (void) alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    
+    //Stub
 }
 
 #pragma mark - UISearchBarDelegate methods

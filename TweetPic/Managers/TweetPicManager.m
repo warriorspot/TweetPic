@@ -104,8 +104,9 @@ static NSUInteger const MaximumConcurrentOperations = 10;
 
 - (void) didEnterSearchTerm: (NSNotification *) notification
 {
-    if(self.tweetRequest.active)
+    if(self.tweetRequest.active || [self.operationQueue operationCount] > 0)
     {
+        NSLog(@"%@", @"Busy");
         return;
     }
     
