@@ -7,6 +7,11 @@
 @synthesize tweetId;
 @synthesize tweet;
 
+- (id) init
+{
+    return [self initWithTweetId:nil tweet:@"" date:[NSDate date]];
+}
+
 - (id) initWithTweetId: (NSString *) newTweetId
                  tweet: (NSString *) newTweet
                   date:(NSDate *) newDate
