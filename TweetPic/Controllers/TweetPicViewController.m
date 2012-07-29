@@ -7,30 +7,105 @@
 #import "TweetPicManager.h"
 #import "TweetPicViewController.h"
 
-
+/// Private interface
+///
 @interface TweetPicViewController()
 
+/// This is an invisible UIButton that is enable when the keyboard is visible.
+/// Tapping this button (i.e. tapping anywhere other than the search bar)
+/// dismisses the keyboard.
 @property (nonatomic, assign) IBOutlet UIButton *dismissKeyboardButton;
+
+/// A count of the number of TweetPicCreatedNotifications received since
+/// entering the current search term.
 @property NSUInteger tweetPicCount;
 
+/// Dismisses the keyboard.
+///
+/// @param sender
+///     dismissKeyboardButton
+///
 - (IBAction) dismissKeyboard:(id)sender;
 
+/// Sent by sortingControl to sort the contents of the tweetPics array.
+/// Sorting only occurs if the array has contents.
+///
+/// @param sender
+///     sortingControl
+///
 - (IBAction) didSelectSortingControl:(id)sender;
 
+/// Handler for the system-generated UIKeyboardDidHideNotification.
+/// Disables the dismissKeyboardButton button.
+///
+/// @param
+///     the notification object
+///
 - (void) keyboardDidHide: (NSNotification *) notification;
 
+/// Handler for the system-generated UIKeyboardDidShowNotification.
+/// Enables the dismissKeyboardButton button.
+///
+/// @param
+///     the notification object
+///
 - (void) keyboardDidShow: (NSNotification *) notification;
 
+/// A helper method that displays a UIAlertView with the given title and
+/// message.  Sets the delegate of the UIAlertView to 'self'
+///
+/// @param title
+///     the text to use as the title of the alert
+///
+/// @param message
+///     the test to use as the body of the alert
+///
 - (void) showMessageWithTitle: (NSString *) title message: (NSString *) message;
 
+/// Sorts the contents of the tweetPics array according to the current selection
+/// of the sortingControl segmented control.  Returns YES if sorting occurred,
+/// NO if no sorting occured (the array was nil or empty).
+///
 - (BOOL) sortTweetPics;
 
+/// A helper method that toggle the visibility of a view by setting the alpha
+/// value appropriately.  The property change can optionally be animated.
+///
+/// @param view
+///     the view to toggle
+///
+/// @param isVisible
+///     YES to make the view visible, NO to make it invisible
+///
+/// @param animated
+///     YES to animate the change, NO otherwise
+///
 - (void) toggleView: (UIView *) view visible: (BOOL) isVisible animated: (BOOL) animated;
 
+/// Handler for the TweetPicErrorNotification.  Reads the value in the
+/// TweetPicErrorDescriptionKey key and displays it in a UIAlertView.
+///
+/// @param notification
+///     the notification object
+///
 - (void) tweetPicErrorNotification: (NSNotification *) notification;
 
+/// Handler for the TweetPicCreatedNotification.  Stores the TweetPic
+/// accessed via the TweetPicKey key in the tweetPics array.  Resorts the
+/// the resulting array and reloads the data in the table view.
+///
+/// @param notification
+///     the notification object
+///
 - (void) tweetPicNotification: (NSNotification *) notification;
 
+/// Handler for the TweetPicsCreatedNotification.  Updates tweetPicsCountLabel
+/// to indicate that all TweetPics have been created for the current search
+/// term.
+///
+/// @param notification
+///     the notification object
+///
 - (void) tweetPicsCreatedNotification: (NSNotification *) notification;
 
 @end
