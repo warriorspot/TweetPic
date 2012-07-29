@@ -9,17 +9,57 @@
 
 static NSUInteger const MaximumConcurrentOperations = 10;
 
+/// Private interface
+///
 @interface TweetPicManager()
 {
+    /// Background task identifier
     UIBackgroundTaskIdentifier bgTask;
 }
 
+/// The operation queue used to queue up and execute FetchMovieOperation
+/// operations.
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
+
+/// A TweetRequest used to query the Twiter API
 @property (nonatomic, strong) TweetRequest *tweetRequest;
 
+/// Handler for the DidEnterSearchTermNotification.  Checks for an already
+/// active "session" of building TweetPics, and returns immediately if a
+/// "session" is active.  Otherwise, creates a new TweetRequest for the
+/// given search term and starts building TweetPics
+///
+/// @param notification
+///     the notification object
+///
 - (void) didEnterSearchTerm: (NSNotification *) notification;
+
+/// Creates and queues a new FetchMovieRequest for the given Tweet instance.
+///
+/// the Tweet whos tweet text is used to query RottenTomatoes for a movie
+/// poster thumbnail image.
+///
+/// @param tweet
+///     the Tweet instance to fetch a movie image for
+///
 - (void) fetchMovieForTweet: (Tweet *) tweet;
+
+/// Posts a TweetPicCreatedNotification containing the given
+/// TweetPic.
+///
+/// @param tweetPic
+///     the TweetPic to include in the notification
+///
 - (void) postNotificationForTweetPic: (TweetPic *) tweetPic;
+
+/// Calls waitUntilAllOperationsAreFinished on the NSOperationQueue. This
+/// causes the current thread to be blocked until the queue is empty.  Calls
+/// postNotificationForCompletion on the main thread as soon as the queue is
+/// empty.
+///
+/// This method must not be called on the main thread!!
+///
+- (void) wait;
 
 @end
 

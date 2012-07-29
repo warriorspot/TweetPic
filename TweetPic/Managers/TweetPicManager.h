@@ -4,6 +4,44 @@
 
 @class TweetRequest;
 
+/// TweetPicManager is responsible for creating TweetPic instances
+/// based on a keyword used to search Twitter for matching tweets.
+/// The keyword is received via a DidEnterSearchTermNotification.
+/// When a search term is received, Twitter is queried via a TWRequest.
+/// For each tweet found, a FetchMovieImageOperation is created
+/// and added to an NSOperationQueue. For each operation that
+/// completes, the resulting movie image is paired with the originating
+/// tweet text in the form of a new TweetPic instance.  A TweetPicCreatedNotification
+/// is then sent.  When the NSOperationQueue is empty, a TweetPicsCreatedNotification is
+/// sent.  If an error occurs when attempting to query Twitter, or no tweets
+/// are found for the given search term, a TweetPicErrorNotification is sent.
+///
+/// Each "session" of creating and responding to FetchMovieOperations is
+/// wrapped in a begin/endBackgroundTask call.  This allows the fetching
+/// of movie images to continue when the app is backgrounded.
+///
+/// Notifications
+/// 
+/// registers for:
+/// 
+/// DidEnterSearchTermNotification
+/// 
+/// sends:
+/// 
+/// TweetPicCreatedNotification
+/// TweetPicsCreatedNotification
+/// TweetPicErrorNotification
+/// 
+/// Delegation
+/// 
+/// implements:
+/// 
+/// RequestDelegate
+/// 
+/// delegates:
+/// 
+/// none
+
 @interface TweetPicManager : NSObject <RequestDelegate>
 
 @end
