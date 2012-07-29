@@ -158,7 +158,6 @@
 						<string key="NSFrame">{{-4, 431}, {328, 30}}</string>
 						<reference key="NSSuperview" ref="578905013"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -273,11 +272,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">segmentedControl</string>
+						<string key="label">sortingControl</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="5836045"/>
 					</object>
-					<int key="connectionID">25</int>
+					<int key="connectionID">28</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -286,15 +285,6 @@
 						<reference key="destination" ref="841351856"/>
 					</object>
 					<int key="connectionID">14</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">sortTweetPics:</string>
-						<reference key="source" ref="948530978"/>
-						<reference key="destination" ref="841351856"/>
-						<int key="IBEventType">13</int>
-					</object>
-					<int key="connectionID">21</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -323,12 +313,12 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">didSelectSegmentedControl:</string>
+						<string key="label">didSelectSortingControl:</string>
 						<reference key="source" ref="5836045"/>
 						<reference key="destination" ref="841351856"/>
 						<int key="IBEventType">13</int>
 					</object>
-					<int key="connectionID">24</int>
+					<int key="connectionID">30</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -420,7 +410,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">26</int>
+			<int key="maxID">30</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -428,12 +418,12 @@
 					<string key="className">TweetPicViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="didSelectSegmentedControl:">id</string>
+						<string key="didSelectSortingControl:">id</string>
 						<string key="dismissKeyboard:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="didSelectSegmentedControl:">
-							<string key="name">didSelectSegmentedControl:</string>
+						<object class="IBActionInfo" key="didSelectSortingControl:">
+							<string key="name">didSelectSortingControl:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="dismissKeyboard:">
@@ -443,7 +433,7 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="dismissKeyboardButton">UIButton</string>
-						<string key="segmentedControl">UISegmentedControl</string>
+						<string key="sortingControl">UISegmentedControl</string>
 						<string key="tweetPicCountLabel">UILabel</string>
 						<string key="tweetPicTableView">UITableView</string>
 						<string key="tweetSearchBar">UISearchBar</string>
@@ -453,8 +443,8 @@
 							<string key="name">dismissKeyboardButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="segmentedControl">
-							<string key="name">segmentedControl</string>
+						<object class="IBToOneOutletInfo" key="sortingControl">
+							<string key="name">sortingControl</string>
 							<string key="candidateClassName">UISegmentedControl</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="tweetPicCountLabel">

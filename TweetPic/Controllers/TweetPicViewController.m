@@ -15,7 +15,7 @@
 
 - (IBAction) dismissKeyboard:(id)sender;
 
-- (IBAction) didSelectSegmentedControl:(id)sender;
+- (IBAction) didSelectSortingControl:(id)sender;
 
 - (void) keyboardDidHide: (NSNotification *) notification;
 
@@ -42,7 +42,7 @@
 @synthesize tweetPics;
 @synthesize tweetSearchBar;
 @synthesize tweetPicTableView;
-@synthesize segmentedControl;
+@synthesize sortingControl;
 @synthesize tweetPicCountLabel;
 @synthesize tweetPicCount;
 
@@ -162,7 +162,7 @@
 
 #pragma mark - IBActions
 
-- (IBAction) didSelectSegmentedControl:(id)sender
+- (IBAction) didSelectSortingControl:(id)sender
 {
     if([self sortTweetPics])
     {
@@ -209,11 +209,11 @@
     
     NSArray *sortedArray = nil;
     
-    if(self.segmentedControl.selectedSegmentIndex == 0)
+    if(self.sortingControl.selectedSegmentIndex == 0)
     {
         sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByTweet:)];
     }
-    else if(self.segmentedControl.selectedSegmentIndex == 1)
+    else if(self.sortingControl.selectedSegmentIndex == 1)
     {
         sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByDate:)];
     }
