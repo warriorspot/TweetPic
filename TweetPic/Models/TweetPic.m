@@ -2,6 +2,14 @@
 #import "Tweet.h"
 #import "TweetPic.h"
 
+@interface TweetPic()
+{
+@private
+    NSDateFormatter *dateFormatter;
+}
+
+@end
+
 @implementation TweetPic
 
 @synthesize date;
@@ -34,6 +42,17 @@
 - (NSComparisonResult) compareByTweet: (TweetPic *) otherTweetPic
 {
     return [self.tweet caseInsensitiveCompare:otherTweetPic.tweet];
+}
+
+- (NSString *) dateString
+{
+    if(dateFormatter == nil)
+    {
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"d MMM y HH:mm:ss"];
+    }
+    
+    return [dateFormatter stringFromDate:self.date];
 }
 
 @end

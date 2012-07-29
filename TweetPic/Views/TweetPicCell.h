@@ -3,7 +3,8 @@
 
 @interface TweetPicCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UILabel *tweetLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *imageView;
+@property (nonatomic, assign) IBOutlet UILabel *tweetLabel;
+@property (nonatomic, assign) IBOutlet UILabel *dateLabel;
+@property (nonatomic, assign) IBOutlet UIImageView *imageView;
 
 @end

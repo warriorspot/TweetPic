@@ -8,6 +8,9 @@
 /// The date of the tweet the tweet string came from
 @property (nonatomic, strong) NSDate *date;
 
+/// Returns a formatted string of the value of the date property
+@property (readonly) NSString *dateString;
+
 /// The tweet
 @property (nonatomic, strong) NSString *tweet;
 
