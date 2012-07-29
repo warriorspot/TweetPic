@@ -10,6 +10,9 @@
 static NSUInteger const MaximumConcurrentOperations = 10;
 
 @interface TweetPicManager()
+{
+    UIBackgroundTaskIdentifier bgTask;
+}
 
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 @property (nonatomic, strong) TweetRequest *tweetRequest;
@@ -37,6 +40,7 @@ static NSUInteger const MaximumConcurrentOperations = 10;
                                                    object:nil];
         operationQueue = [[NSOperationQueue alloc] init];
         self.operationQueue.maxConcurrentOperationCount = MaximumConcurrentOperations;
+        bgTask = UIBackgroundTaskInvalid;
     }
     
     return self;
@@ -74,6 +78,18 @@ static NSUInteger const MaximumConcurrentOperations = 10;
 
 - (void) request:(Request *)request didSucceedWithObject:(id)object;
 {
+    if(bgTask != UIBackgroundTaskInvalid)
+    {
+        [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+    }
+    
+    bgTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        if(bgTask != UIBackgroundTaskInvalid)
+        {
+            [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+        }
+    }];
+    
     NSArray *newTweets = (NSArray *) object;
     
     for(Tweet *tweet in newTweets)
@@ -127,6 +143,10 @@ static NSUInteger const MaximumConcurrentOperations = 10;
     [[NSNotificationCenter defaultCenter] postNotificationName:TweetPicsCreatedNotification
                                                         object:self
                                                       userInfo:nil];
+    if(bgTask != UIBackgroundTaskInvalid)
+    {
+        [[UIApplication sharedApplication] endBackgroundTask:bgTask];
+    }
 }
 
 - (void) wait
