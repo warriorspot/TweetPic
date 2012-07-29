@@ -78,15 +78,6 @@
                           name:UIKeyboardDidHideNotification
                         object:nil];
     
-    //For fun, make a gradient
-    UIView *gradientView = [[UIView alloc] initWithFrame:self.tweetPicCountLabel.frame];
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    gradient.frame = gradientView.bounds;
-    UIColor *searchBarColor = [UIColor colorWithRed:110.0/255.0 green:133.0/255.0 blue:162.0/255.0 alpha:1.0];
-    gradient.colors = [NSArray arrayWithObjects:(id)[searchBarColor CGColor], (id)[[UIColor whiteColor]CGColor], nil];
-    [gradientView.layer addSublayer:gradient];
-    [self.view addSubview:gradientView];
-    [self.view insertSubview:self.tweetPicCountLabel aboveSubview:gradientView];
 }
 
 - (void) viewDidUnload
