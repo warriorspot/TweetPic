@@ -96,6 +96,14 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    if(self.tweetPics == nil || [self.tweetPics count] == 0)
+    {
+        [self.tweetSearchBar becomeFirstResponder];
+    }
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
