@@ -23,7 +23,7 @@
 
 - (void) showMessageWithTitle: (NSString *) title message: (NSString *) message;
 
-- (void) sortTweetPics;
+- (BOOL) sortTweetPics;
 
 - (void) toggleView: (UIView *) view visible: (BOOL) isVisible animated: (BOOL) animated;
 
@@ -165,10 +165,12 @@
 
 - (IBAction) didSelectSegmentedControl:(id)sender
 {
-    [self sortTweetPics];
-    [self toggleView:self.tweetPicTableView visible:NO animated:NO];
-    [self.tweetPicTableView reloadData];
-    [self toggleView:self.tweetPicTableView visible:YES animated:YES];
+    if([self sortTweetPics])
+    {
+        [self toggleView:self.tweetPicTableView visible:NO animated:NO];
+        [self.tweetPicTableView reloadData];
+        [self toggleView:self.tweetPicTableView visible:YES animated:YES];
+    }
 }
 
 - (IBAction)dismissKeyboard:(id)sender
@@ -199,11 +201,11 @@
     [alertView show];
 }
 
-- (void) sortTweetPics
+- (BOOL) sortTweetPics
 {
     if(self.tweetPics == nil || [self.tweetPics count] == 0)
     {
-        return;
+        return NO;
     }
     
     NSArray *sortedArray = nil;
@@ -218,6 +220,8 @@
     }
     
     self.tweetPics = [NSMutableArray arrayWithArray: sortedArray];
+    
+    return YES;
 }
 
 - (void) toggleView: (UIView *) toggleView visible: (BOOL) visible animated: (BOOL) animated
