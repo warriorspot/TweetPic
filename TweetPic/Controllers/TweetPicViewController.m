@@ -15,13 +15,15 @@
 
 - (IBAction) dismissKeyboard:(id)sender;
 
-- (IBAction) sortTweetPics:(id)sender;
+- (IBAction) didSelectSegmentedControl:(id)sender;
 
 - (void) keyboardDidHide: (NSNotification *) notification;
 
 - (void) keyboardDidShow: (NSNotification *) notification;
 
 - (void) showMessageWithTitle: (NSString *) title message: (NSString *) message;
+
+- (void) sortTweetPics;
 
 - (void) toggleView: (UIView *) view visible: (BOOL) isVisible animated: (BOOL) animated;
 
@@ -161,34 +163,17 @@
 
 #pragma mark - IBActions
 
-- (IBAction)dismissKeyboard:(id)sender
+- (IBAction) didSelectSegmentedControl:(id)sender
 {
-    [self.view endEditing:YES];
-}
-
-- (void) sortTweetPics:(id)sender
-{
-    if(self.tweetPics == nil || [self.tweetPics count] == 0)
-    {
-        return;
-    }
-    
-    NSArray *sortedArray = nil;
-    
-    if(self.segmentedControl.selectedSegmentIndex == 0)
-    {
-        sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByTweet:)];
-    }
-    else if(self.segmentedControl.selectedSegmentIndex == 1)
-    {
-        sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByDate:)];
-    }
-    
-    self.tweetPics = [NSMutableArray arrayWithArray: sortedArray];
-    
+    [self sortTweetPics];
     [self toggleView:self.tweetPicTableView visible:NO animated:NO];
     [self.tweetPicTableView reloadData];
     [self toggleView:self.tweetPicTableView visible:YES animated:YES];
+}
+
+- (IBAction)dismissKeyboard:(id)sender
+{
+    [self.view endEditing:YES];
 }
 
 #pragma mark - private methods
@@ -212,6 +197,27 @@
                                               otherButtonTitles: nil];
     
     [alertView show];
+}
+
+- (void) sortTweetPics
+{
+    if(self.tweetPics == nil || [self.tweetPics count] == 0)
+    {
+        return;
+    }
+    
+    NSArray *sortedArray = nil;
+    
+    if(self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByTweet:)];
+    }
+    else if(self.segmentedControl.selectedSegmentIndex == 1)
+    {
+        sortedArray = [self.tweetPics sortedArrayUsingSelector:@selector(compareByDate:)];
+    }
+    
+    self.tweetPics = [NSMutableArray arrayWithArray: sortedArray];
 }
 
 - (void) toggleView: (UIView *) toggleView visible: (BOOL) visible animated: (BOOL) animated
@@ -262,6 +268,7 @@
     }
     
     [self.tweetPics addObject:tweetPic];
+    [self sortTweetPics];
     [self.tweetPicTableView reloadData];
 }
 
