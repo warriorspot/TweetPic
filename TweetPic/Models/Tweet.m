@@ -7,7 +7,9 @@
 @synthesize tweetId;
 @synthesize tweet;
 
-- (id) initWithTweetId: (NSString *) newTweetId tweet: (NSString *) newTweet date:(NSDate *) newDate
+- (id) initWithTweetId: (NSString *) newTweetId
+                 tweet: (NSString *) newTweet
+                  date:(NSDate *) newDate
 {
     self = [super init];
     if(self)
@@ -18,6 +20,14 @@
     }
     
     return self;
+}
+
+#pragma mark - instance methods
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"id: %@ tweet: %@ date: %@",
+             self.tweetId, self.tweet, [self.date description]];
 }
 
 @end

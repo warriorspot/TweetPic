@@ -11,7 +11,7 @@
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"title: %@ posters: %@", self.title, [self.imageURL absoluteString]];
+    return [NSString stringWithFormat:@"title: %@ poster: %@", self.title, [self.imageURL absoluteString]];
 }
 
 @end
