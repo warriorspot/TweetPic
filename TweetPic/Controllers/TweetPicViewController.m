@@ -1,5 +1,6 @@
 
 #import <QuartzCore/QuartzCore.h>
+#include "my_itoa.h"
 #import "MBProgressHUD.h"
 #import "TweetPic.h"
 #import "TweetPicCell.h"
@@ -246,7 +247,12 @@
     [self toggleView:self.tweetPicTableView visible:YES animated:YES];
     
     tweetPicCount++;
-    self.tweetPicCountLabel.text = [NSString stringWithFormat:@"%d", tweetPicCount];
+    
+    // For fun, here's my implementation of itoa in action ;)
+    char *count_string = my_itoa((int) tweetPicCount);
+    NSString *countString = [NSString stringWithCString:count_string encoding:NSUTF8StringEncoding];
+    self.tweetPicCountLabel.text = countString;
+    free(count_string);
     
     TweetPic *tweetPic = [notification.userInfo valueForKey:TweetPicKey];
     
