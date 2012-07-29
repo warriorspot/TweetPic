@@ -28,6 +28,7 @@
 		2682CA2515BA32AC00AA15B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2415BA32AC00AA15B4 /* MBProgressHUD.m */; };
 		2682CA2A15BA377600AA15B4 /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 2682CA2915BA377600AA15B4 /* Request.m */; };
 		2682CA2C15BA3EDB00AA15B4 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */; };
+		26CEFCBC15C4903A002BFF68 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26CEFCBB15C4903A002BFF68 /* QuartzCore.framework */; };
 		26D51B5515C43568006C33E6 /* FetchMovieOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D51B5415C43568006C33E6 /* FetchMovieOperation.m */; };
 		44887DE015C031940001F256 /* TweetPicManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44887DDE15C031940001F256 /* TweetPicManagerTests.m */; };
 		44887DE315C031A60001F256 /* TweetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44887DE215C031A60001F256 /* TweetTests.m */; };
@@ -83,6 +84,7 @@
 		2682CA2815BA377600AA15B4 /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		2682CA2915BA377600AA15B4 /* Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
 		2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		26CEFCBB15C4903A002BFF68 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		26D51B5315C43568006C33E6 /* FetchMovieOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchMovieOperation.h; sourceTree = "<group>"; };
 		26D51B5415C43568006C33E6 /* FetchMovieOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchMovieOperation.m; sourceTree = "<group>"; };
 		44887DDD15C031940001F256 /* TweetPicManagerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetPicManagerTests.h; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26CEFCBC15C4903A002BFF68 /* QuartzCore.framework in Frameworks */,
 				44C8A9B115BF6CEE009E97A8 /* SystemConfiguration.framework in Frameworks */,
 				2682CA2C15BA3EDB00AA15B4 /* Twitter.framework in Frameworks */,
 				2682C9C415B8FDB600AA15B4 /* UIKit.framework in Frameworks */,
@@ -166,6 +169,7 @@
 		2682C9C215B8FDB600AA15B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26CEFCBB15C4903A002BFF68 /* QuartzCore.framework */,
 				44C8A9B015BF6CEE009E97A8 /* SystemConfiguration.framework */,
 				2682CA2B15BA3EDB00AA15B4 /* Twitter.framework */,
 				2682C9C315B8FDB600AA15B4 /* UIKit.framework */,
