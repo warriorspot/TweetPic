@@ -3,8 +3,11 @@
 #import "MovieRequest.h"
 #import "SimpleRESTRequest.h"
 
+/// Private interface.
+///
 @interface MovieRequest()
 
+/// The SimpleRESTRequest used to perform the actual request.
 @property (nonatomic, strong) SimpleRESTRequest *request;
 
 @end

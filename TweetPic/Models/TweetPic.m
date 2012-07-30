@@ -2,9 +2,12 @@
 #import "Tweet.h"
 #import "TweetPic.h"
 
+/// Private interface
+///
 @interface TweetPic()
 {
 @private
+    /// The date formatter used to return the date in string format
     NSDateFormatter *dateFormatter;
 }
 

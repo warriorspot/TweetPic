@@ -44,6 +44,11 @@ static NSUInteger const MaximumConcurrentOperations = 10;
 ///
 - (void) fetchMovieForTweet: (Tweet *) tweet;
 
+/// Posts a TweetPicsCreateNotification.  Ends the current background
+/// task (if needed).
+///
+- (void) postNotificationForCompletion;
+
 /// Posts a TweetPicCreatedNotification containing the given
 /// TweetPic.
 ///

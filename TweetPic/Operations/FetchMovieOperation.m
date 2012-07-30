@@ -4,13 +4,27 @@
 #import "MovieRequest.h"
 #import "Tweet.h"
 
+/// Private interface.
+///
 @interface FetchMovieOperation()
 
+/// If YES, the operation is complete.
 @property BOOL done;
+
+/// The movie image fetched from RottenTomatoes, or a default image if no
+/// image could be retrived.
 @property (nonatomic, readwrite, strong) UIImage *movieImage;
+
+/// The current word from the tweet being used to search for a movie image
 @property (nonatomic, strong) NSString *currentSearchTerm;
+
+/// The request used to search the RottenTomatoes API
 @property (nonatomic, strong) MovieRequest *movieRequest;
+
+/// The Tweet for which we are trying to find an image
 @property (nonatomic, readwrite, strong) Tweet *tweet;
+
+/// The tweet split by the space character, one word per index
 @property (nonatomic, strong) NSArray *searchTerms;
 
 @end
