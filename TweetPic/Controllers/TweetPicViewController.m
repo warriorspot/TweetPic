@@ -2,6 +2,7 @@
 #import <QuartzCore/QuartzCore.h>
 #include "my_itoa.h"
 #import "MBProgressHUD.h"
+#import "Reachability.h"
 #import "TweetPic.h"
 #import "TweetPicCell.h"
 #import "TweetPicManager.h"
@@ -186,6 +187,13 @@
 
 - (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    if([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable)
+    {
+        [self showMessageWithTitle:NSLocalizedString(@"ERROR_TITLE", nil)
+                           message:NSLocalizedString(@"ERROR_NOT_CONNECTED", nil)];
+        return;
+    }
+    
     NSString *searchTerm = searchBar.text;
     
     if(searchTerm != nil && [searchTerm length] > 0)
